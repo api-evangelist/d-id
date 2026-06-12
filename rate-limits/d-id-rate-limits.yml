@@ -1,0 +1,67 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: D-ID
+providerId: d-id
+created: '2026-06-12'
+modified: '2026-06-12'
+
+retryAfter: Retry-After
+throttled: 429
+
+notes: >
+  D-ID does not publish explicit per-second or per-minute rate limit thresholds in
+  their public documentation. The platform supports parallel processing of tens of
+  thousands of simultaneous video generation requests. Rate limiting behavior is
+  governed by plan tier and monthly minute quota. Exceeding monthly quota results
+  in a 402 Insufficient Credits response. The 402 and 429 HTTP status codes are
+  documented in the API reference.
+
+limits:
+  - scope: account
+    metric: video_minutes
+    limit: 3
+    timeFrame: trial
+    unit: minutes
+    planTier: Trial
+    notes: 14-day trial allocation
+
+  - scope: account
+    metric: video_minutes
+    limit: 10
+    timeFrame: monthly
+    unit: minutes
+    planTier: Lite
+
+  - scope: account
+    metric: video_minutes
+    limit: 30
+    timeFrame: monthly
+    unit: minutes
+    planTier: Pro
+
+  - scope: account
+    metric: video_minutes
+    limit: 65
+    timeFrame: monthly
+    unit: minutes
+    planTier: Advanced
+
+  - scope: account
+    metric: video_minutes
+    limit: -1
+    timeFrame: monthly
+    unit: minutes
+    planTier: Enterprise
+    notes: Unlimited — custom allocation per contract
+
+errorCodes:
+  - code: 429
+    description: Too Many Requests — request rate exceeded; use Retry-After header
+  - code: 402
+    description: Insufficient Credits — monthly video minute quota exhausted
+  - code: 401
+    description: Authorization Error — invalid or missing API key
+  - code: 403
+    description: Permission Error — operation not permitted on current plan tier
+  - code: 451
+    description: Content Moderation Error — image, celebrity, text, or audio policy violation

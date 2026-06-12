@@ -1,0 +1,119 @@
+aid: d-id
+name: D-ID
+description: >
+  D-ID is an AI-powered platform for generating talking-head videos and interactive digital
+  human experiences from still photos, text scripts, and audio narration. Developers can
+  access REST APIs to produce pre-rendered talking avatar videos, perform real-time
+  streaming agent conversations via WebRTC, translate videos into 100+ languages with voice
+  cloning and lip-sync, and create custom AI agents backed by LLMs and RAG knowledge bases.
+  The platform has generated over 150 million videos and supports parallel processing of
+  tens of thousands of simultaneous API requests. D-ID serves use cases ranging from
+  enterprise training and customer service to personalized marketing campaigns and language
+  learning applications.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - AI Video
+  - Digital Humans
+  - Talking Head
+  - Avatar
+  - Generative AI
+  - Video Generation
+  - Real-Time Streaming
+  - Text to Video
+  - Video Translation
+  - Voice Cloning
+url: https://raw.githubusercontent.com/api-evangelist/d-id/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+
+apis:
+  - aid: d-id-videos-api
+    name: D-ID Videos API
+    description: >
+      REST API for generating AI talking-head videos from a source image combined with a
+      text script or audio file. Supports multiple avatar versions including V4 Expressive
+      (full-HD with dynamic expressions), V3 Pro, V3 Instant (personal avatars from short
+      clips), and V2 Photo avatars. Returns asynchronous job results via polling or webhook.
+    humanURL: https://docs.d-id.com/reference/createtalk
+    baseURL: https://api.d-id.com
+    tags:
+      - AI Video
+      - Talking Head
+      - Avatar
+      - Text to Video
+    properties:
+      - type: Documentation
+        url: https://docs.d-id.com/reference/get-started
+      - type: OpenAPI
+        url: https://docs.d-id.com/llms.txt
+
+  - aid: d-id-agents-api
+    name: D-ID Agents API
+    description: >
+      API for creating and managing interactive real-time AI agents that combine digital
+      avatar streaming with large language models, RAG-based knowledge bases, and custom
+      tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory,
+      chat export, and integration with third-party LLM providers. Enables face-to-face
+      AI conversations at scale.
+    humanURL: https://docs.d-id.com/reference/agents
+    baseURL: https://api.d-id.com
+    tags:
+      - AI Agents
+      - Real-Time Streaming
+      - Digital Humans
+      - WebRTC
+      - LLM Integration
+    properties:
+      - type: Documentation
+        url: https://docs.d-id.com/reference/agents
+
+  - aid: d-id-translations-api
+    name: D-ID Translations API
+    description: >
+      API for translating existing videos into 100+ languages using AI-driven speech
+      translation, voice cloning, and lip-sync technology. Enables brands and content
+      creators to localize video content at scale without re-recording or manual dubbing.
+    humanURL: https://docs.d-id.com/reference/translations
+    baseURL: https://api.d-id.com
+    tags:
+      - Video Translation
+      - Voice Cloning
+      - Lip Sync
+      - Localization
+    properties:
+      - type: Documentation
+        url: https://docs.d-id.com/reference/translations
+
+common:
+  - type: Website
+    url: https://www.d-id.com
+  - type: Documentation
+    url: https://docs.d-id.com
+  - type: APIReference
+    url: https://docs.d-id.com/reference/get-started
+  - type: GitHubOrganization
+    url: https://github.com/de-id
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/deidentification
+  - type: X
+    url: https://twitter.com/D_ID_
+  - type: Blog
+    url: https://www.d-id.com/blog
+  - type: APICategoryBlog
+    url: https://www.d-id.com/blog/category/api/
+  - type: Pricing
+    url: https://www.d-id.com/pricing/api/
+  - type: StatusPage
+    url: https://status.d-id.com
+  - type: Plans
+    url: plans/d-id-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/d-id-rate-limits.yml
+  - type: FinOps
+    url: finops/d-id-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

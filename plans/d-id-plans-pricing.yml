@@ -1,0 +1,172 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: D-ID
+providerId: d-id
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+
+type: freemium
+
+plans:
+  - name: Trial
+    type: free
+    description: >
+      14-day free trial with access to core API capabilities and limited video minutes.
+      Videos include a watermark. Intended for evaluation and prototyping.
+    price:
+      amount: 0
+      currency: USD
+      period: trial
+    features:
+      - name: Video Minutes
+        type: quota
+        metric: video_minutes
+        limit: 3
+        timeFrame: trial
+        unit: minutes
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Watermark
+        type: boolean
+        value: true
+      - name: Avatar Versions
+        type: boolean
+        value: true
+        notes: V2 Photo avatars included
+
+  - name: Lite
+    type: paid
+    description: >
+      Entry-level paid plan with a monthly allocation of video minutes and standard avatar
+      access. Includes watermark on exported videos. Suitable for low-volume personal or
+      small-business use.
+    price:
+      amount: 5.90
+      currency: USD
+      period: monthly
+      annualDiscount: true
+      annualAmount: 4.70
+    features:
+      - name: Video Minutes
+        type: quota
+        metric: video_minutes
+        limit: 10
+        timeFrame: monthly
+        unit: minutes
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Watermark
+        type: boolean
+        value: true
+
+  - name: Pro
+    type: paid
+    description: >
+      Mid-tier plan with priority rendering, no watermark, broader avatar selection, and
+      full REST API access. Suitable for developers and small teams building video-heavy
+      applications.
+    price:
+      amount: 48.00
+      currency: USD
+      period: monthly
+    features:
+      - name: Video Minutes
+        type: quota
+        metric: video_minutes
+        limit: 30
+        timeFrame: monthly
+        unit: minutes
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Watermark
+        type: boolean
+        value: false
+      - name: Priority Rendering
+        type: boolean
+        value: true
+      - name: Avatar Versions
+        type: boolean
+        value: true
+        notes: V2, V3 Instant, V3 Pro avatars included
+
+  - name: Advanced
+    type: paid
+    description: >
+      High-volume plan with significantly more video minutes, full API access, commercial
+      rights, and access to all avatar tiers including V4 Expressive. Designed for
+      production workloads and agencies.
+    price:
+      amount: 299.00
+      currency: USD
+      period: monthly
+      annualAmount: 249.00
+    features:
+      - name: Video Minutes
+        type: quota
+        metric: video_minutes
+        limit: 65
+        timeFrame: monthly
+        unit: minutes
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Watermark
+        type: boolean
+        value: false
+      - name: Commercial Rights
+        type: boolean
+        value: true
+      - name: V4 Expressive Avatars
+        type: boolean
+        value: true
+      - name: Priority Rendering
+        type: boolean
+        value: true
+
+  - name: Enterprise
+    type: enterprise
+    description: >
+      Custom enterprise plan with unlimited video minutes, dedicated support, SSO,
+      advanced security features, custom integrations, and professional services.
+      Pricing negotiated directly with D-ID sales.
+    price:
+      amount: 0
+      currency: USD
+      period: custom
+      notes: Custom pricing — contact sales
+    features:
+      - name: Video Minutes
+        type: quota
+        metric: video_minutes
+        limit: -1
+        timeFrame: monthly
+        unit: minutes
+        notes: Unlimited
+      - name: API Access
+        type: boolean
+        value: true
+      - name: Agents API
+        type: boolean
+        value: true
+      - name: SSO
+        type: boolean
+        value: true
+      - name: Dedicated Support
+        type: boolean
+        value: true
+      - name: Custom Integrations
+        type: boolean
+        value: true
+      - name: Advanced Security
+        type: boolean
+        value: true
+
+notes: >
+  API usage (video minutes) is shared with Studio usage — minutes consumed via API are
+  deducted from the same monthly balance as the web app. Additional minutes and
+  add-ons (voice cloning, advanced expressions) are available as paid add-ons.
+  Source: https://www.d-id.com/pricing/api/

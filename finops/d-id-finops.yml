@@ -1,0 +1,79 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: D-ID
+providerId: d-id
+created: '2026-06-12'
+modified: '2026-06-12'
+
+billingModel: subscription-plus-consumption
+notes: >
+  D-ID uses a hybrid billing model: a base monthly subscription determines the
+  included video minute allocation (quota), and usage above the quota triggers
+  additional per-minute or add-on charges. API and Studio usage share the same
+  monthly minute balance. Enterprise plans use custom contracted allocations.
+
+focusColumns:
+  ChargeCategory: Usage
+  ServiceCategory: AI and Machine Learning
+  ServiceName: D-ID Video Generation
+  ProviderName: D-ID
+  ResourceType: VideoMinute
+  Region: Global
+  BillingCurrency: USD
+
+meters:
+  - name: VideoMinutes
+    description: >
+      Minutes of AI-generated talking-head video produced via the Videos API,
+      including V2 Photo, V3 Instant, V3 Pro, and V4 Expressive avatar types.
+    unit: minutes
+    billingDimension: per_minute
+    includedInPlan:
+      Lite: 10
+      Pro: 30
+      Advanced: 65
+      Enterprise: custom
+    overage:
+      currency: USD
+      notes: Overage rates not publicly disclosed; additional minutes available as add-ons
+
+  - name: StreamingMinutes
+    description: >
+      Minutes of real-time WebRTC agent streaming sessions via the Agents API.
+    unit: minutes
+    billingDimension: per_session_minute
+    notes: Billed separately from pre-rendered video minutes; volume depends on plan tier
+
+  - name: AgentSessions
+    description: >
+      Number of interactive AI agent conversation sessions initiated via the Agents API.
+    unit: sessions
+    billingDimension: per_session
+    notes: Volume allocation determined by plan tier; Enterprise plans have custom limits
+
+  - name: VoiceCloning
+    description: >
+      Add-on feature for cloning a speaker's voice for use in video generation and
+      translation APIs.
+    unit: add-on
+    billingDimension: add-on
+    notes: Available as a paid add-on across applicable plan tiers
+
+principles:
+  Visibility:
+    description: >
+      Monitor video minute consumption, streaming session usage, and agent session counts
+      through the D-ID Studio dashboard. API credit balance is accessible via the
+      account management API endpoint.
+    url: https://studio.d-id.com
+  Optimization:
+    description: >
+      Use lower avatar tiers (V2 Photo or V3 Instant) for high-volume batch jobs where
+      full expressiveness is not required to reduce per-minute processing cost. Leverage
+      webhooks instead of polling to avoid unnecessary API calls. Right-size subscription
+      tier to actual monthly minute consumption; upgrade only when consistently hitting quota.
+    recommendations:
+      - Use V3 Instant avatars for cost-effective personalized video at scale
+      - Use webhooks for job completion notification to avoid polling overhead
+      - Monitor the 402 Insufficient Credits response to trigger proactive plan upgrades
+      - Pre-cache presenter and avatar configurations to reduce per-call overhead

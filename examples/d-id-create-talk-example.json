@@ -1,0 +1,40 @@
+{
+  "title": "Create a Talk (POST /talks)",
+  "description": "Example request and response for generating a talking-head video using a text script with Microsoft TTS.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.d-id.com/talks",
+    "headers": {
+      "Authorization": "Basic <base64(api_key:)>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "source_url": "https://d-id-public-bucket.s3.amazonaws.com/alice.jpg",
+      "script": {
+        "type": "text",
+        "input": "Hello! I am Alice, your AI assistant powered by D-ID. How can I help you today?",
+        "provider": {
+          "type": "microsoft",
+          "voice_id": "Sara",
+          "language": "en-US"
+        }
+      },
+      "config": {
+        "result_format": "mp4",
+        "fluent": true
+      },
+      "name": "Welcome Message",
+      "webhook": "https://example.com/webhooks/d-id"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "tlk_abc123xyz",
+      "object": "talk",
+      "created_at": "2026-06-12T10:00:00.000Z",
+      "created_by": "google-oauth2|123456789",
+      "status": "created"
+    }
+  }
+}

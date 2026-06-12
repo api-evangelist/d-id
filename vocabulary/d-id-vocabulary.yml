@@ -1,0 +1,142 @@
+vocabulary:
+  - term: talk
+    definition: >
+      An asynchronous job that generates an AI talking-head video by animating
+      a source image with a text script (TTS) or pre-recorded audio file. Talks
+      use V2 photo or V3 Pro avatar technology.
+    tags:
+      - Videos
+      - Core Concept
+
+  - term: agent
+    definition: >
+      A configurable interactive AI entity that combines a digital avatar
+      presenter with an LLM backend, optional RAG knowledge base, and event
+      triggers. Agents support real-time streaming conversations via WebRTC
+      or LiveKit.
+    tags:
+      - Agents
+      - Core Concept
+
+  - term: session
+    definition: >
+      A real-time streaming connection established between a client and a D-ID
+      agent. Sessions carry WebRTC or LiveKit credentials and may optionally
+      persist chat history.
+    tags:
+      - Agents
+      - Streaming
+
+  - term: presenter
+    definition: >
+      The avatar configuration attached to a talk or agent, specifying the
+      visual representation (photo, personal clip, or V4 expressive avatar)
+      and the TTS voice settings.
+    tags:
+      - Avatars
+      - Configuration
+
+  - term: clip
+    definition: >
+      A short training video (V3 Instant) used to create a personal avatar. The
+      clip is trained to produce a V3 Instant presenter that can generate
+      talking-head videos with the subject's likeness and voice.
+    tags:
+      - Avatars
+      - V3
+
+  - term: expressive avatar
+    definition: >
+      A V4 full-HD avatar capable of dynamic facial expressions and lifelike
+      motion, distinct from static photo avatars. Used in both standalone video
+      generation and real-time agent streaming.
+    tags:
+      - Avatars
+      - V4
+
+  - term: knowledge
+    definition: >
+      A RAG knowledge base attached to an agent. Can store up to 5 documents
+      and is searched at inference time to provide relevant context to the LLM.
+    tags:
+      - Agents
+      - RAG
+
+  - term: document
+    definition: >
+      A single piece of content (web page, PDF, text) ingested into a knowledge
+      base. Documents are indexed for semantic retrieval during agent chats.
+    tags:
+      - Agents
+      - RAG
+
+  - term: translation
+    definition: >
+      A video localization job that uses AI speech translation, voice cloning,
+      and lip-sync to re-dub an existing video into one or more target
+      languages. Supports 100+ languages.
+    tags:
+      - Translations
+      - Core Concept
+
+  - term: transcription
+    definition: >
+      A versioned text representation of a translated video's speech, linked to
+      a translation job. Transcriptions may be selected or swapped to refine
+      the output.
+    tags:
+      - Translations
+
+  - term: voice
+    definition: >
+      A TTS voice available on the D-ID platform, sourced from providers such
+      as Amazon Polly, Microsoft Azure, ElevenLabs, or Google TTS. Voices have
+      gender, language, and access-level attributes.
+    tags:
+      - TTS
+      - Configuration
+
+  - term: client key
+    definition: >
+      A scoped API key automatically generated for an agent that permits
+      read-only / session-level operations from untrusted clients (e.g., a
+      browser SDK), without exposing the full account API key.
+    tags:
+      - Authentication
+      - Agents
+
+  - term: webhook
+    definition: >
+      An HTTPS callback URL provided by the caller. D-ID posts a notification
+      to this URL when an asynchronous job (talk, translation, etc.) completes
+      or encounters an error.
+    tags:
+      - Integration
+      - Asynchronous
+
+  - term: credits
+    definition: >
+      The unit of account consumption on the D-ID platform. Credits are
+      deducted per video generation, translation, or streaming minute and are
+      tracked via the GET /credits endpoint.
+    tags:
+      - Billing
+      - Platform
+
+  - term: result_url
+    definition: >
+      The URL of the completed output video or asset. Set once a job reaches
+      done status. May point to a D-ID-managed S3 bucket or a custom
+      destination if a result_url was specified in the request.
+    tags:
+      - Output
+      - Storage
+
+  - term: stream
+    definition: >
+      A real-time WebRTC or LiveKit media stream used to deliver live
+      avatar video during an agent session. Streams are created per-session
+      and torn down on disconnect.
+    tags:
+      - Streaming
+      - Agents

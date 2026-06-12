@@ -1,0 +1,42 @@
+{
+  "title": "Create a Video Translation (POST /translations)",
+  "description": "Example request and response for translating an existing video into Spanish and French with lip-sync.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.d-id.com/translations",
+    "headers": {
+      "Authorization": "Basic <base64(api_key:)>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "source_url": "https://example.com/original-video.mp4",
+      "languages": ["es", "fr"],
+      "source_language": "en",
+      "webhook": "https://example.com/webhooks/translations",
+      "user_data": "campaign-2026-q2"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "translations": [
+        {
+          "id": "trn_es_abc123",
+          "status": "created",
+          "result_url": null,
+          "subtitles_url": null,
+          "thumbnail_url": null,
+          "transcriptions": []
+        },
+        {
+          "id": "trn_fr_abc456",
+          "status": "created",
+          "result_url": null,
+          "subtitles_url": null,
+          "thumbnail_url": null,
+          "transcriptions": []
+        }
+      ]
+    }
+  }
+}

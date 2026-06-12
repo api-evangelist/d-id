@@ -47,7 +47,13 @@ apis:
       - type: Documentation
         url: https://docs.d-id.com/reference/get-started
       - type: OpenAPI
-        url: https://docs.d-id.com/llms.txt
+        url: openapi/d-id-videos-openapi.yml
+      - type: JSONSchema
+        url: json-schema/d-id-talk-schema.json
+      - type: Example
+        url: examples/d-id-create-talk-example.json
+      - type: Example
+        url: examples/d-id-create-translation-example.json
 
   - aid: d-id-agents-api
     name: D-ID Agents API
@@ -68,6 +74,12 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.d-id.com/reference/agents
+      - type: OpenAPI
+        url: openapi/d-id-agents-openapi.yml
+      - type: JSONSchema
+        url: json-schema/d-id-agent-schema.json
+      - type: Example
+        url: examples/d-id-create-agent-example.json
 
   - aid: d-id-translations-api
     name: D-ID Translations API
@@ -113,6 +125,10 @@ common:
     url: rate-limits/d-id-rate-limits.yml
   - type: FinOps
     url: finops/d-id-finops.yml
+  - type: Vocabulary
+    url: vocabulary/d-id-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/d-id-context.jsonld
 
 maintainers:
   - FN: Kin Lane

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/d-id/main/json-schema/d-id-agent-schema.json",
+  "title": "D-ID Agent",
+  "description": "Schema for a D-ID interactive AI agent.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique agent identifier."
+    },
+    "preview_description": {
+      "type": "string",
+      "description": "Human-readable description of the agent."
+    },
+    "presenter": {
+      "type": "object",
+      "description": "Avatar presenter configuration.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["talk", "clip", "expressive"],
+          "description": "Presenter type (talk = V2 photo, clip = V3 personal, expressive = V4)."
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "presenter_id": {
+          "type": "string"
+        },
+        "voice": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "voice_id": { "type": "string" }
+          }
+        }
+      },
+      "required": ["type"]
+    },
+    "llm": {
+      "type": "object",
+      "description": "Language model configuration.",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": ["openai", "google", "d-id", "custom", "external"]
+        },
+        "model": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string",
+          "description": "System prompt / persona instructions."
+        },
+        "template": {
+          "type": "string"
+        }
+      }
+    },
+    "knowledge": {
+      "type": "object",
+      "description": "Knowledge base configuration for RAG.",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "starter_message": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Suggested conversation starters displayed to users."
+    },
+    "greetings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Greeting messages; one is selected randomly per session."
+    },
+    "provider": {
+      "type": "string",
+      "const": "d-id-agents"
+    },
+    "client_key": {
+      "type": "string",
+      "description": "Auto-generated scoped client key for SDK embedding."
+    },
+    "embed": {
+      "type": "boolean",
+      "description": "Whether the agent is enabled for SDK/website embedding."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Plan and billing metadata.",
+      "properties": {
+        "plan": { "type": "string" }
+      }
+    },
+    "triggers": {
+      "type": "object",
+      "description": "Event-based configurations (webhooks, tools)."
+    },
+    "user_data": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "description": "Custom user metadata string."
+    }
+  },
+  "required": ["id", "presenter"],
+  "additionalProperties": true
+}

@@ -1,0 +1,169 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "did": "https://api.d-id.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Talk": "did:Talk",
+    "Agent": "did:Agent",
+    "Session": "did:Session",
+    "Translation": "did:Translation",
+    "KnowledgeBase": "did:KnowledgeBase",
+    "Document": "did:Document",
+    "Voice": "did:Voice",
+    "Presenter": "did:Presenter",
+    "CreditBalance": "did:CreditBalance",
+
+    "id": "@id",
+
+    "status": {
+      "@id": "did:status",
+      "@type": "xsd:string"
+    },
+    "result_url": {
+      "@id": "did:resultUrl",
+      "@type": "@id"
+    },
+    "source_url": {
+      "@id": "did:sourceUrl",
+      "@type": "@id"
+    },
+    "audio_url": {
+      "@id": "did:audioUrl",
+      "@type": "@id"
+    },
+    "webhook": {
+      "@id": "did:webhook",
+      "@type": "@id"
+    },
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "modified_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "created_by": {
+      "@id": "schema:creator",
+      "@type": "xsd:string"
+    },
+    "user_id": {
+      "@id": "did:userId",
+      "@type": "xsd:string"
+    },
+    "user_data": {
+      "@id": "did:userData",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+
+    "presenter": {
+      "@id": "did:presenter",
+      "@type": "@id"
+    },
+    "llm": {
+      "@id": "did:llm",
+      "@type": "@id"
+    },
+    "knowledge": {
+      "@id": "did:knowledge",
+      "@type": "@id"
+    },
+    "greetings": {
+      "@id": "did:greetings",
+      "@container": "@list"
+    },
+    "starter_message": {
+      "@id": "did:starterMessage",
+      "@container": "@list"
+    },
+    "client_key": {
+      "@id": "did:clientKey",
+      "@type": "xsd:string"
+    },
+    "embed": {
+      "@id": "did:embed",
+      "@type": "xsd:boolean"
+    },
+
+    "session_url": {
+      "@id": "did:sessionUrl",
+      "@type": "@id"
+    },
+    "session_token": {
+      "@id": "did:sessionToken",
+      "@type": "xsd:string"
+    },
+    "interrupt_enabled": {
+      "@id": "did:interruptEnabled",
+      "@type": "xsd:boolean"
+    },
+
+    "languages": {
+      "@id": "did:languages",
+      "@container": "@list"
+    },
+    "source_language": {
+      "@id": "did:sourceLanguage",
+      "@type": "xsd:string"
+    },
+    "subtitles_url": {
+      "@id": "did:subtitlesUrl",
+      "@type": "@id"
+    },
+    "thumbnail_url": {
+      "@id": "did:thumbnailUrl",
+      "@type": "@id"
+    },
+    "transcriptions": {
+      "@id": "did:transcriptions",
+      "@container": "@list"
+    },
+
+    "provider": {
+      "@id": "did:provider",
+      "@type": "xsd:string"
+    },
+    "voice_id": {
+      "@id": "did:voiceId",
+      "@type": "xsd:string"
+    },
+    "gender": "schema:gender",
+    "access": {
+      "@id": "did:access",
+      "@type": "xsd:string"
+    },
+
+    "remaining": {
+      "@id": "did:creditsRemaining",
+      "@type": "xsd:number"
+    },
+    "total": {
+      "@id": "did:creditsTotal",
+      "@type": "xsd:number"
+    },
+    "expire_at": {
+      "@id": "did:expireAt",
+      "@type": "xsd:dateTime"
+    },
+
+    "talks": {
+      "@id": "did:talks",
+      "@container": "@list"
+    },
+    "agents": {
+      "@id": "did:agents",
+      "@container": "@list"
+    },
+    "credits": {
+      "@id": "did:credits",
+      "@container": "@list"
+    },
+    "token": {
+      "@id": "did:paginationToken",
+      "@type": "xsd:string"
+    }
+  }
+}

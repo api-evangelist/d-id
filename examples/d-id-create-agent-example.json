@@ -1,0 +1,80 @@
+{
+  "title": "Create an Agent (POST /agents)",
+  "description": "Example request and response for creating an interactive AI agent with a photo avatar, GPT-4o LLM, and a knowledge base.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.d-id.com/agents",
+    "headers": {
+      "Authorization": "Basic <base64(api_key:)>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "presenter": {
+        "type": "talk",
+        "source_url": "https://example.com/avatar.jpg",
+        "voice": {
+          "type": "microsoft",
+          "voice_id": "Sara"
+        }
+      },
+      "preview_name": "Customer Support Agent",
+      "preview_description": "An AI-powered support agent for Acme Corp.",
+      "llm": {
+        "provider": "openai",
+        "model": "gpt-4o",
+        "instructions": "You are a helpful customer support agent for Acme Corp. Answer questions politely and concisely."
+      },
+      "knowledge": {
+        "id": "knw_abc123"
+      },
+      "starter_message": [
+        "What products do you offer?",
+        "How do I reset my password?",
+        "What are your business hours?"
+      ],
+      "greetings": [
+        "Hi there! How can I help you today?",
+        "Welcome to Acme Corp support! What can I do for you?"
+      ],
+      "embed": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "agt_abc123xyz",
+      "preview_description": "An AI-powered support agent for Acme Corp.",
+      "presenter": {
+        "type": "talk",
+        "source_url": "https://example.com/avatar.jpg",
+        "voice": {
+          "type": "microsoft",
+          "voice_id": "Sara"
+        }
+      },
+      "llm": {
+        "provider": "openai",
+        "model": "gpt-4o",
+        "instructions": "You are a helpful customer support agent for Acme Corp."
+      },
+      "knowledge": {
+        "id": "knw_abc123"
+      },
+      "starter_message": [
+        "What products do you offer?",
+        "How do I reset my password?",
+        "What are your business hours?"
+      ],
+      "greetings": [
+        "Hi there! How can I help you today?",
+        "Welcome to Acme Corp support! What can I do for you?"
+      ],
+      "provider": "d-id-agents",
+      "client_key": "ck_abc123xyz",
+      "embed": true,
+      "metadata": {
+        "plan": "pro"
+      }
+    }
+  }
+}

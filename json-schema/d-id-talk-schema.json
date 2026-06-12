@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/d-id/main/json-schema/d-id-talk-schema.json",
+  "title": "D-ID Talk",
+  "description": "Schema for a D-ID talking-head video job (talk object).",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique talk identifier."
+    },
+    "object": {
+      "type": "string",
+      "const": "talk",
+      "description": "Object type discriminator."
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Identifier of the user who submitted the talk."
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the source image (.jpg or .png) used to animate."
+    },
+    "audio_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the audio file used for synthesis."
+    },
+    "result_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "S3 URI pointing to the resulting video file."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["created", "started", "done", "error", "rejected"],
+      "description": "Current processing status of the talk."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp when the talk was created."
+    },
+    "created_by": {
+      "type": "string",
+      "description": "User ID of the creator."
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp when processing started."
+    },
+    "modified_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of last modification."
+    },
+    "webhook": {
+      "type": "string",
+      "format": "uri",
+      "description": "HTTPS webhook URL for completion notifications."
+    },
+    "user_data": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Custom metadata string (max 1,000 characters)."
+    },
+    "config": {
+      "type": "object",
+      "description": "Configuration options used for processing.",
+      "properties": {
+        "result_format": {
+          "type": "string",
+          "enum": ["mp4", "gif", "wav"]
+        },
+        "fluent": {
+          "type": "boolean"
+        },
+        "pad_audio": {
+          "type": "number"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Collected process metadata."
+    }
+  },
+  "required": ["id", "status"],
+  "additionalProperties": true
+}

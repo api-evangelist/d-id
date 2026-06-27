@@ -2,6 +2,13 @@
   "repo": "d-id",
   "feeds": [
     {
+      "source": "https://www.d-id.com/blog/feed/",
+      "feed_url": "https://www.d-id.com/blog/feed/",
+      "title": "",
+      "saved": 1,
+      "method": "feed"
+    },
+    {
       "source": "https://twitter.com/D_ID_",
       "feed_url": "https://twitter.com/D_ID_",
       "title": "",
@@ -9,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 6,
+  "fetched": "2026-06-27T12:03:07Z"
 }

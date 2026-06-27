@@ -50,9 +50,9 @@ apis:
         url: openapi/d-id-videos-openapi.yml
       - type: JSONSchema
         url: json-schema/d-id-talk-schema.json
-      - type: Example
+      - type: Examples
         url: examples/d-id-create-talk-example.json
-      - type: Example
+      - type: Examples
         url: examples/d-id-create-translation-example.json
 
   - aid: d-id-agents-api
@@ -78,7 +78,7 @@ apis:
         url: openapi/d-id-agents-openapi.yml
       - type: JSONSchema
         url: json-schema/d-id-agent-schema.json
-      - type: Example
+      - type: Examples
         url: examples/d-id-create-agent-example.json
 
   - aid: d-id-translations-api

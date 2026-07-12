@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/d-id-agents-openapi.yml, openapi/d-id-videos-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using API key as username.
+  sources:
+  - openapi/d-id-agents-openapi.yml
+  - openapi/d-id-videos-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token authentication.
+  sources:
+  - openapi/d-id-agents-openapi.yml
+  - openapi/d-id-videos-openapi.yml
+- name: clientKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Scoped client key for SDK embedding.
+  sources:
+  - openapi/d-id-agents-openapi.yml

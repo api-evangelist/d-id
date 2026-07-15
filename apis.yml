@@ -99,6 +99,8 @@ apis:
         url: https://docs.d-id.com/reference/translations
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/d-id-agentic-access.yml
   - type: TrustCenter
     url: security/d-id-trust-center.yml
   - type: DomainSecurity

@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: D-ID Agents Voices API
+  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.d-id.com
+  termsOfService: https://www.d-id.com/terms-of-use/
+servers:
+- url: https://api.d-id.com
+  description: D-ID Production API
+security:
+- basicAuth: []
+- bearerAuth: []
+tags:
+- name: Voices
+  description: List available TTS voices
+paths:
+  /tts/voices:
+    get:
+      operationId: voices
+      summary: List voices
+      description: Retrieve available TTS voices, optionally filtered by provider or voice ID.
+      tags:
+      - Voices
+      parameters:
+      - name: provider
+        in: query
+        description: Filter by voice provider.
+        schema:
+          type: string
+          enum:
+          - amazon
+          - microsoft
+          - azure-openai
+          - elevenlabs
+          - google
+      - name: id
+        in: query
+        description: Filter by voice ID (unique per provider).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of voice objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IVoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+  schemas:
+    VoiceLanguage:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Language code (e.g., en-US).
+        name:
+          type: string
+          description: Human-readable language name.
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
+    IVoice:
+      type: object
+      required:
+      - id
+      - name
+      - gender
+      - access
+      - provider
+      - languages
+      - styles
+      properties:
+        id:
+          type: string
+          description: Unique voice identifier.
+        name:
+          type: string
+          description: Display name of the voice.
+        gender:
+          type: string
+          description: Voice gender.
+        access:
+          type: string
+          enum:
+          - public
+          - premium
+          - private
+          - external-private
+        provider:
+          type: string
+          enum:
+          - amazon
+          - microsoft
+          - azure-openai
+          - elevenlabs
+          - google
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoiceLanguage'
+        styles:
+          type: array
+          items:
+            type: string
+        language:
+          type: string
+        config:
+          type: object
+          properties:
+            modelId:
+              type: string
+        description:
+          type: string
+        age:
+          type: string
+        useCase:
+          type: string
+        voiceType:
+          type: string
+          enum:
+          - Avatar
+          - CloneVoice
+        isLegacy:
+          type: boolean
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using API key as username.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication.
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Scoped client key for SDK embedding.
+externalDocs:
+  description: D-ID Agents API Reference
+  url: https://docs.d-id.com/reference/agents

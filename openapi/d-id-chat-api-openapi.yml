@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: D-ID Agents Chat API
+  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.d-id.com
+  termsOfService: https://www.d-id.com/terms-of-use/
+servers:
+- url: https://api.d-id.com
+  description: D-ID Production API
+security:
+- basicAuth: []
+- bearerAuth: []
+tags:
+- name: Chat
+  description: Send messages and receive responses in an agent chat
+paths:
+  /agents/{agentId}/chat/{chatId}:
+    post:
+      operationId: agentchat
+      summary: Send a chat message
+      description: 'Send a message to an agent''s chat and receive a response including optional knowledge matches, video ID, and chat mode.
+
+        '
+      tags:
+      - Chat
+      security:
+      - basicAuth: []
+      - bearerAuth: []
+      - clientKeyAuth: []
+      parameters:
+      - name: agentId
+        in: path
+        required: true
+        description: Agent identifier.
+        schema:
+          type: string
+      - name: chatId
+        in: path
+        required: true
+        description: Chat identifier.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatMessageRequest'
+      responses:
+        '200':
+          description: Chat response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatMessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+  schemas:
+    ChatMessage:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - user
+          - assistant
+          - system
+        content:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    ChatMessageResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeMatch'
+          description: Relevant knowledge base matches.
+        documentIds:
+          type: array
+          items:
+            type: string
+        result:
+          type: string
+          description: Text response from the agent.
+        chatMode:
+          type: string
+        videoId:
+          type: string
+          description: ID of the generated avatar video response.
+    KnowledgeMatch:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          type: string
+        title:
+          type: string
+        document_id:
+          type: string
+        knowledge_id:
+          type: string
+        source_url:
+          type: string
+          format: uri
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: AuthorizationError
+        description:
+          type: string
+          example: user unauthenticated
+    ChatMessageRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+          description: Conversation messages. Must contain at least one message.
+        streamId:
+          type: string
+          description: Optional stream ID to link video response.
+        sessionId:
+          type: string
+          description: Optional session ID for WebRTC stream.
+        chatMode:
+          type: string
+          enum:
+          - Functional
+          - TextOnly
+          - Maintenance
+          - Playground
+          description: Chat operating mode (Playground deprecated).
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using API key as username.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication.
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Scoped client key for SDK embedding.
+externalDocs:
+  description: D-ID Agents API Reference
+  url: https://docs.d-id.com/reference/agents

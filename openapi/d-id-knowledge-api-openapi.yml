@@ -1,0 +1,322 @@
+openapi: 3.0.3
+info:
+  title: D-ID Agents Knowledge API
+  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.d-id.com
+  termsOfService: https://www.d-id.com/terms-of-use/
+servers:
+- url: https://api.d-id.com
+  description: D-ID Production API
+security:
+- basicAuth: []
+- bearerAuth: []
+tags:
+- name: Knowledge
+  description: Manage knowledge bases and documents for RAG
+paths:
+  /knowledge:
+    get:
+      operationId: getknowledges
+      summary: List knowledge bases
+      description: Retrieve all knowledge bases for the authenticated user.
+      tags:
+      - Knowledge
+      responses:
+        '200':
+          description: Array of knowledge base objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createknowledge
+      summary: Create a knowledge base
+      description: 'Create a new knowledge base for RAG. Each knowledge base can hold up to 5 documents.
+
+        '
+      tags:
+      - Knowledge
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKnowledgeDto'
+      responses:
+        '200':
+          description: Created knowledge base.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /knowledge/{id}:
+    get:
+      operationId: getknowledge
+      summary: Get a knowledge base
+      description: Retrieve a specific knowledge base by ID.
+      tags:
+      - Knowledge
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: Knowledge base object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateknowledge
+      summary: Update a knowledge base
+      tags:
+      - Knowledge
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKnowledgeDto'
+      responses:
+        '200':
+          description: Updated knowledge base.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteknowledge
+      summary: Delete a knowledge base
+      tags:
+      - Knowledge
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: Knowledge base deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /knowledge/{knowledgeId}/documents:
+    get:
+      operationId: getdocuments
+      summary: List documents
+      description: Retrieve all documents in a knowledge base.
+      tags:
+      - Knowledge
+      parameters:
+      - name: knowledgeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of document objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createdocument
+      summary: Create a document
+      description: Add a document to an existing knowledge base.
+      tags:
+      - Knowledge
+      parameters:
+      - name: knowledgeId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                source_url:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Created document.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /knowledge/{knowledgeId}/documents/{documentId}:
+    get:
+      operationId: getdocument
+      summary: Get a document
+      tags:
+      - Knowledge
+      parameters:
+      - name: knowledgeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Document object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ILogicalKnowledge'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deletedocument
+      summary: Delete a document
+      tags:
+      - Knowledge
+      parameters:
+      - name: knowledgeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Document deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+  schemas:
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: AuthorizationError
+        description:
+          type: string
+          example: user unauthenticated
+    CreateKnowledgeDto:
+      type: object
+      required:
+      - name
+      - description
+      properties:
+        name:
+          type: string
+          description: Knowledge base identifier name.
+        description:
+          type: string
+          description: Description of the knowledge base content.
+        starter_message:
+          type: array
+          items:
+            type: string
+          description: Suggested chat starters (deprecated; prefer agent.starter_messages).
+    ILogicalKnowledge:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Knowledge / document identifier.
+        type:
+          type: string
+          enum:
+          - knowledge
+          - document
+          - record
+        name:
+          type: string
+        description:
+          type: string
+        owner_id:
+          type: string
+        created_by:
+          type: string
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        modified_at:
+          type: string
+          format: date-time
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using API key as username.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication.
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Scoped client key for SDK embedding.
+externalDocs:
+  description: D-ID Agents API Reference
+  url: https://docs.d-id.com/reference/agents

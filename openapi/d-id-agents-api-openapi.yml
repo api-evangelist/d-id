@@ -1,0 +1,312 @@
+openapi: 3.0.3
+info:
+  title: D-ID Agents API
+  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.d-id.com
+  termsOfService: https://www.d-id.com/terms-of-use/
+servers:
+- url: https://api.d-id.com
+  description: D-ID Production API
+security:
+- basicAuth: []
+- bearerAuth: []
+tags:
+- name: Agents
+  description: Create and manage AI agent definitions
+paths:
+  /agents:
+    get:
+      operationId: listmyagents
+      summary: List agents
+      description: Retrieve all agents belonging to the authenticated user.
+      tags:
+      - Agents
+      responses:
+        '200':
+          description: Array of agent objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AgentResponseDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createagent
+      summary: Create an agent
+      description: 'Create a new interactive AI agent combining a digital avatar presenter, an LLM backend, and an optional knowledge base.
+
+        '
+      tags:
+      - Agents
+      parameters:
+      - name: x-api-key-external
+        in: header
+        description: Optional ElevenLabs API key for TTS with IVC voices.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreateDto'
+      responses:
+        '200':
+          description: Created agent object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentResponseDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /agents/{id}:
+    get:
+      operationId: getagent
+      summary: Get an agent
+      description: Retrieve details of a specific agent by ID.
+      tags:
+      - Agents
+      security:
+      - basicAuth: []
+      - bearerAuth: []
+      - clientKeyAuth: []
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: Agent object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentResponseDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    patch:
+      operationId: updateagent
+      summary: Update an agent
+      description: Update configuration for an existing agent.
+      tags:
+      - Agents
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreateDto'
+      responses:
+        '200':
+          description: Updated agent object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentResponseDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteagent
+      summary: Delete an agent
+      description: Permanently delete an agent.
+      tags:
+      - Agents
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: Agent deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+  schemas:
+    PresenterConfig:
+      type: object
+      description: 'Avatar presenter configuration. Supports Talk (V2 photo avatar), Clip (V3 personal avatar), or Expressive (V4) presenter types.
+
+        '
+      properties:
+        type:
+          type: string
+          enum:
+          - talk
+          - clip
+          - expressive
+        source_url:
+          type: string
+          format: uri
+          description: Image URL for talk-type presenters.
+        presenter_id:
+          type: string
+          description: Presenter ID for clip or expressive types.
+        voice:
+          type: object
+          properties:
+            type:
+              type: string
+            voice_id:
+              type: string
+    AgentResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Agent identifier.
+        preview_description:
+          type: string
+        presenter:
+          $ref: '#/components/schemas/PresenterConfig'
+        llm:
+          $ref: '#/components/schemas/LLMConfig'
+        knowledge:
+          type: object
+          properties:
+            id:
+              type: string
+        starter_message:
+          type: array
+          items:
+            type: string
+        greetings:
+          type: array
+          items:
+            type: string
+        provider:
+          type: string
+          example: d-id-agents
+        error:
+          type: object
+          description: Error details if applicable.
+        triggers:
+          type: object
+        client_key:
+          type: string
+          description: Auto-generated scoped client key.
+        metadata:
+          type: object
+          description: Plan information.
+        embed:
+          type: boolean
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: AuthorizationError
+        description:
+          type: string
+          example: user unauthenticated
+    LLMConfig:
+      type: object
+      description: Language model configuration.
+      properties:
+        provider:
+          type: string
+          enum:
+          - openai
+          - google
+          - d-id
+          - custom
+          - external
+          description: LLM provider.
+        model:
+          type: string
+          description: Model identifier.
+        instructions:
+          type: string
+          description: System prompt / persona instructions.
+        template:
+          type: string
+          description: Response formatting template.
+    AgentCreateDto:
+      type: object
+      required:
+      - presenter
+      properties:
+        presenter:
+          $ref: '#/components/schemas/PresenterConfig'
+        preview_name:
+          type: string
+          description: Agent display name.
+        preview_description:
+          type: string
+          description: Agent description.
+        llm:
+          $ref: '#/components/schemas/LLMConfig'
+        knowledge:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Knowledge base ID for RAG.
+        starter_message:
+          type: array
+          items:
+            type: string
+          description: Suggested conversation starters.
+        greetings:
+          type: array
+          items:
+            type: string
+          description: Greeting messages (randomly selected per session).
+        user_data:
+          type: string
+          description: Custom user data (1–1,000 characters).
+          minLength: 1
+          maxLength: 1000
+        embed:
+          type: boolean
+          description: Enable SDK/website embedding.
+        triggers:
+          type: object
+          description: Event-based configurations (webhooks, tools).
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using API key as username.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication.
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Scoped client key for SDK embedding.
+externalDocs:
+  description: D-ID Agents API Reference
+  url: https://docs.d-id.com/reference/agents

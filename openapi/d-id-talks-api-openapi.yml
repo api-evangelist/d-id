@@ -1,0 +1,385 @@
+openapi: 3.0.3
+info:
+  title: D-ID Agents Talks API
+  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
+
+    '
+  version: 1.0.0
+  contact:
+    url: https://www.d-id.com
+  termsOfService: https://www.d-id.com/terms-of-use/
+servers:
+- url: https://api.d-id.com
+  description: D-ID Production API
+security:
+- basicAuth: []
+- bearerAuth: []
+tags:
+- name: Talks
+  description: Generate AI talking-head videos (V2 Photo / V3 Pro avatars)
+paths:
+  /talks:
+    get:
+      operationId: gettalks
+      summary: List talks
+      description: Retrieve a paginated list of talks for the authenticated user.
+      tags:
+      - Talks
+      parameters:
+      - name: limit
+        in: query
+        description: Number of talks to return (default 100).
+        schema:
+          type: number
+          default: 100
+      - name: token
+        in: query
+        description: Pagination token from a previous response.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of talks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTalksDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createtalk
+      summary: Create a talk
+      description: 'Generate an AI talking-head video by combining a source image with a text script or audio file. Processing is asynchronous — poll GET /talks/{id} or provide a webhook URL for completion notification.
+
+        '
+      tags:
+      - Talks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTalkDto'
+      responses:
+        '201':
+          description: Talk created and queued for processing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TalkResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '451':
+          $ref: '#/components/responses/ContentModeration'
+  /talks/{id}:
+    get:
+      operationId: gettalk
+      summary: Get a talk
+      description: Retrieve the status and result of a specific talk.
+      tags:
+      - Talks
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: Talk object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTalkDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deletetalk
+      summary: Delete a talk
+      description: Delete a specific talk by ID. Cannot delete a talk that is currently processing.
+      tags:
+      - Talks
+      parameters:
+      - $ref: '#/components/parameters/resourceId'
+      responses:
+        '200':
+          description: Deleted talk object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTalkDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Talk is in process, try again later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonError'
+components:
+  responses:
+    PaymentRequired:
+      description: Insufficient credits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    Forbidden:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    ContentModeration:
+      description: Content moderation rejection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+  schemas:
+    Script:
+      oneOf:
+      - $ref: '#/components/schemas/TextScript'
+      - $ref: '#/components/schemas/AudioScript'
+      discriminator:
+        propertyName: type
+    GetTalkDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique talk identifier.
+        user_id:
+          type: string
+          description: User who submitted the talk.
+        source_url:
+          type: string
+          format: uri
+          description: Source image URL (.jpg or .png).
+        audio_url:
+          type: string
+          format: uri
+          description: Audio file URL used for the actor.
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        modified_at:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/TalkStatus'
+        result_url:
+          type: string
+          format: uri
+          description: S3 URI to the resulting video.
+        config:
+          type: object
+          description: Configuration used for processing.
+        webhook:
+          type: string
+          format: uri
+        metadata:
+          type: object
+          description: Collected process data.
+    TalkStatus:
+      type: string
+      enum:
+      - created
+      - started
+      - done
+      - error
+      - rejected
+      description: Processing status of a talk or video job.
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
+    TalkResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: talk
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          type: string
+        status:
+          $ref: '#/components/schemas/TalkStatus'
+    TextScript:
+      type: object
+      required:
+      - type
+      - input
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+        input:
+          type: string
+          description: Text content to synthesize (3–40,000 characters).
+          minLength: 3
+          maxLength: 40000
+        provider:
+          type: object
+          description: TTS provider configuration.
+          properties:
+            type:
+              type: string
+              enum:
+              - microsoft
+              - elevenlabs
+              - amazon
+              - google
+              - azure-openai
+            voice_id:
+              type: string
+              description: Voice identifier for the selected provider.
+            language:
+              type: string
+              description: Language code for TTS synthesis.
+    GetTalksDto:
+      type: object
+      properties:
+        talks:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTalkDto'
+        token:
+          type: string
+          description: Pagination token for the next page.
+    AudioScript:
+      type: object
+      required:
+      - type
+      - audio_url
+      properties:
+        type:
+          type: string
+          enum:
+          - audio
+        audio_url:
+          type: string
+          format: uri
+          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
+    CreateTalkDto:
+      type: object
+      required:
+      - script
+      properties:
+        source_url:
+          type: string
+          format: uri
+          description: URL of the source image to animate (defaults to Alice demo image).
+        script:
+          $ref: '#/components/schemas/Script'
+        config:
+          type: object
+          description: Advanced configuration options.
+          properties:
+            logo:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                position:
+                  type: array
+                  items:
+                    type: number
+            result_format:
+              type: string
+              enum:
+              - mp4
+              - gif
+              - wav
+            fluent:
+              type: boolean
+            pad_audio:
+              type: number
+        user_data:
+          type: string
+          description: Custom metadata (max 1,000 characters).
+          maxLength: 1000
+        name:
+          type: string
+          description: Title for the generated video.
+        webhook:
+          type: string
+          format: uri
+          description: HTTPS webhook URL for completion notification.
+        result_url:
+          type: string
+          format: uri
+          description: Custom destination URL for the output video.
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using API key as username.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication.
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Scoped client key for SDK embedding.
+externalDocs:
+  description: D-ID Agents API Reference
+  url: https://docs.d-id.com/reference/agents

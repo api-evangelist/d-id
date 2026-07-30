@@ -11,7 +11,20 @@ description: >
   enterprise training and customer service to personalized marketing campaigns and language
   learning applications.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Paid (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/d-id.png
 tags:
   - AI Video
   - Digital Humans
@@ -29,76 +42,241 @@ modified: '2026-06-12'
 specificationVersion: '0.19'
 
 apis:
-  - aid: d-id-videos-api
-    name: D-ID Videos API
-    description: >
-      REST API for generating AI talking-head videos from a source image combined with a
-      text script or audio file. Supports multiple avatar versions including V4 Expressive
-      (full-HD with dynamic expressions), V3 Pro, V3 Instant (personal avatars from short
-      clips), and V2 Photo avatars. Returns asynchronous job results via polling or webhook.
-    humanURL: https://docs.d-id.com/reference/createtalk
-    baseURL: https://api.d-id.com
-    tags:
-      - AI Video
-      - Talking Head
-      - Avatar
-      - Text to Video
-    properties:
-      - type: Documentation
-        url: https://docs.d-id.com/reference/get-started
-      - type: OpenAPI
-        url: openapi/d-id-videos-openapi.yml
-      - type: JSONSchema
-        url: json-schema/d-id-talk-schema.json
-      - type: Examples
-        url: examples/d-id-create-talk-example.json
-      - type: Examples
-        url: examples/d-id-create-translation-example.json
-
-  - aid: d-id-agents-api
-    name: D-ID Agents API
-    description: >
-      API for creating and managing interactive real-time AI agents that combine digital
-      avatar streaming with large language models, RAG-based knowledge bases, and custom
-      tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory,
-      chat export, and integration with third-party LLM providers. Enables face-to-face
-      AI conversations at scale.
-    humanURL: https://docs.d-id.com/reference/agents
-    baseURL: https://api.d-id.com
-    tags:
-      - AI Agents
-      - Real-Time Streaming
-      - Digital Humans
-      - WebRTC
-      - LLM Integration
-    properties:
-      - type: Documentation
-        url: https://docs.d-id.com/reference/agents
-      - type: OpenAPI
-        url: openapi/d-id-agents-openapi.yml
-      - type: JSONSchema
-        url: json-schema/d-id-agent-schema.json
-      - type: Examples
-        url: examples/d-id-create-agent-example.json
-
-  - aid: d-id-translations-api
-    name: D-ID Translations API
-    description: >
-      API for translating existing videos into 100+ languages using AI-driven speech
-      translation, voice cloning, and lip-sync technology. Enables brands and content
-      creators to localize video content at scale without re-recording or manual dubbing.
-    humanURL: https://docs.d-id.com/reference/translations
-    baseURL: https://api.d-id.com
-    tags:
-      - Video Translation
-      - Voice Cloning
-      - Lip Sync
-      - Localization
-    properties:
-      - type: Documentation
-        url: https://docs.d-id.com/reference/translations
-
+- aid: d-id-translations-api
+  name: D-ID Translations API
+  description: >
+    API for translating existing videos into 100+ languages using AI-driven speech translation, voice
+    cloning, and lip-sync technology. Enables brands and content creators to localize video content at
+    scale without re-recording or manual dubbing.
+  humanURL: https://docs.d-id.com/reference/translations
+  baseURL: https://api.d-id.com
+  tags:
+  - Video Translation
+  - Voice Cloning
+  - Lip Sync
+  - Localization
+  properties:
+  - type: Documentation
+    url: https://docs.d-id.com/reference/translations
+- aid: d-id:d-id-agents-api
+  name: D-ID Agents API
+  description: Create and manage AI agent definitions
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-agents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-chat-api
+  name: D-ID Chat API
+  description: Send messages and receive responses in an agent chat
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-chat-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-credits-api
+  name: D-ID Credits API
+  description: Retrieve account credit balance
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Credits
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-credits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-knowledge-api
+  name: D-ID Knowledge API
+  description: Manage knowledge bases and documents for RAG
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Knowledge
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-knowledge-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-sessions-api
+  name: D-ID Sessions API
+  description: Manage real-time streaming sessions for agents
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-talks-api
+  name: D-ID Talks API
+  description: Generate AI talking-head videos (V2 Photo / V3 Pro avatars)
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Talks
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-talks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-translations-api
+  name: D-ID Translations API
+  description: Translate existing videos into 100+ languages with lip-sync
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Translations
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-translations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-videos-v4-api
+  name: D-ID Videos V4 API
+  description: Generate V4 Expressive full-HD avatar videos
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Videos V4
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-videos-v4-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
+- aid: d-id:d-id-voices-api
+  name: D-ID Voices API
+  description: List available TTS voices
+  humanURL: https://docs.d-id.com/reference/createtalk
+  baseURL: https://api.d-id.com
+  tags:
+  - Voices
+  properties:
+  - type: OpenAPI
+    url: openapi/d-id-voices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.d-id.com/reference/get-started
+  - type: JSONSchema
+    url: json-schema/d-id-talk-schema.json
+  - type: Examples
+    url: examples/d-id-create-talk-example.json
+  - type: Examples
+    url: examples/d-id-create-translation-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/agents
+  - type: JSONSchema
+    url: json-schema/d-id-agent-schema.json
+  - type: Examples
+    url: examples/d-id-create-agent-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/d-id/overview
   - type: AgenticAccess
     url: agentic-access/d-id-agentic-access.yml
   - type: TrustCenter

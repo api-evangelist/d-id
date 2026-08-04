@@ -1,0 +1,30 @@
+{
+  "provider": "d-id",
+  "sources": [
+    "d-id-agents-api-openapi.yml",
+    "d-id-chat-api-openapi.yml",
+    "d-id-credits-api-openapi.yml",
+    "d-id-knowledge-api-openapi.yml",
+    "d-id-sessions-api-openapi.yml",
+    "d-id-talks-api-openapi.yml",
+    "d-id-translations-api-openapi.yml",
+    "d-id-videos-v4-api-openapi.yml",
+    "d-id-voices-api-openapi.yml"
+  ],
+  "outputs": [
+    "d-id-agents-api-openapi.yml",
+    "d-id-chat-api-openapi.yml",
+    "d-id-credits-api-openapi.yml",
+    "d-id-knowledge-api-openapi.yml",
+    "d-id-sessions-api-openapi.yml",
+    "d-id-talks-api-openapi.yml",
+    "d-id-translations-api-openapi.yml",
+    "d-id-videos-v4-api-openapi.yml",
+    "d-id-voices-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

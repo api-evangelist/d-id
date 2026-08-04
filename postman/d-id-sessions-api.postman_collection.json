@@ -1,0 +1,780 @@
+{
+  "info": {
+    "_postman_id": "cf74d0f7-75fd-4b42-92bb-16e01992250e",
+    "name": "D-ID Agents Sessions API",
+    "description": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:11.000Z",
+    "updatedAt": "2026-07-28T01:29:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf74d0f7-75fd-4b42-92bb-16e01992250e"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "agents",
+          "item": [
+            {
+              "name": "{agentId}",
+              "item": [
+                {
+                  "name": "sessions",
+                  "item": [
+                    {
+                      "name": "Create a session",
+                      "id": "ad9a757d-cb3e-451b-b4fb-8073484156fd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"chat_persist\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/agents/:agentId/sessions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "agents",
+                            ":agentId",
+                            "sessions"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1aa4069d-5133-4181-93e1-5c4c7fe37c49",
+                              "key": "agentId",
+                              "value": "<string>",
+                              "description": "(Required) Agent identifier."
+                            }
+                          ]
+                        },
+                        "description": "Establish a new streaming session for an Expressive Agent, returning session credentials required to connect via WebRTC or LiveKit.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "a7a2765c-1df0-4657-a3dc-d516e0bac79e",
+                          "name": "Session created successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chat_persist\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/agents/:agentId/sessions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "agents",
+                                ":agentId",
+                                "sessions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"session_url\": \"<uri>\",\n  \"session_token\": \"<string>\",\n  \"interrupt_enabled\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-a7a2765c-1df0-4657-a3dc-d516e0bac79e"
+                        },
+                        {
+                          "id": "fafe141b-f514-48a1-a9f0-af40f48c4e81",
+                          "name": "Bad request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chat_persist\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/agents/:agentId/sessions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "agents",
+                                ":agentId",
+                                "sessions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-fafe141b-f514-48a1-a9f0-af40f48c4e81"
+                        },
+                        {
+                          "id": "dd356d73-9be7-4065-a54a-261ffa086a8b",
+                          "name": "Authentication failure.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chat_persist\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/agents/:agentId/sessions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "agents",
+                                ":agentId",
+                                "sessions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-dd356d73-9be7-4065-a54a-261ffa086a8b"
+                        },
+                        {
+                          "id": "e2e4b6dd-33c9-4d57-a9bf-c733ad3626c4",
+                          "name": "Agent not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"chat_persist\": false\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/agents/:agentId/sessions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "agents",
+                                ":agentId",
+                                "sessions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-e2e4b6dd-33c9-4d57-a9bf-c733ad3626c4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:11.000Z",
+                      "updatedAt": "2026-07-28T01:29:11.000Z",
+                      "uid": "35240-ad9a757d-cb3e-451b-b4fb-8073484156fd"
+                    }
+                  ],
+                  "id": "e2ba9516-3d19-4e34-b3b7-402a0a4f5841",
+                  "createdAt": "2026-07-28T01:29:11.000Z",
+                  "updatedAt": "2026-07-28T01:29:11.000Z",
+                  "uid": "35240-e2ba9516-3d19-4e34-b3b7-402a0a4f5841"
+                }
+              ],
+              "id": "338b60fb-6498-40f4-9f43-943917fd103d",
+              "createdAt": "2026-07-28T01:29:11.000Z",
+              "updatedAt": "2026-07-28T01:29:11.000Z",
+              "uid": "35240-338b60fb-6498-40f4-9f43-943917fd103d"
+            }
+          ],
+          "id": "e81e2071-3fd8-42a6-ac10-cd66250f38bf",
+          "createdAt": "2026-07-28T01:29:11.000Z",
+          "updatedAt": "2026-07-28T01:29:11.000Z",
+          "uid": "35240-e81e2071-3fd8-42a6-ac10-cd66250f38bf"
+        }
+      ],
+      "id": "0e3579a9-a7b3-4dbe-8a73-7cff0776c1a3",
+      "createdAt": "2026-07-28T01:29:11.000Z",
+      "updatedAt": "2026-07-28T01:29:11.000Z",
+      "uid": "35240-0e3579a9-a7b3-4dbe-8a73-7cff0776c1a3"
+    },
+    {
+      "name": "agents",
+      "item": [
+        {
+          "name": "{agentId}",
+          "item": [
+            {
+              "name": "sessions",
+              "item": [
+                {
+                  "name": "{sessionId}",
+                  "item": [
+                    {
+                      "name": "Get a session",
+                      "id": "89eaf48a-e12a-4602-a672-0f10328cb8a2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/sessions/:sessionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "sessions",
+                            ":sessionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8a458ee3-85cb-4a78-9ab1-d97d7c026250",
+                              "key": "agentId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "a01053c7-8d6b-4442-b210-906c4572d217",
+                              "key": "sessionId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details of a specific session."
+                      },
+                      "response": [
+                        {
+                          "id": "3d589956-12a6-4d4f-ba47-93b1f6316c84",
+                          "name": "Session object.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agents/:agentId/sessions/:sessionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agents",
+                                ":agentId",
+                                "sessions",
+                                ":sessionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                },
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"session_url\": \"<uri>\",\n  \"session_token\": \"<string>\",\n  \"interrupt_enabled\": \"<boolean>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-3d589956-12a6-4d4f-ba47-93b1f6316c84"
+                        },
+                        {
+                          "id": "2d328f4b-8f66-4e79-b854-fd9440764a44",
+                          "name": "Authentication failure.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agents/:agentId/sessions/:sessionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agents",
+                                ":agentId",
+                                "sessions",
+                                ":sessionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                },
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-2d328f4b-8f66-4e79-b854-fd9440764a44"
+                        },
+                        {
+                          "id": "9a64a92c-47d7-4172-9349-7054de1601bc",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agents/:agentId/sessions/:sessionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agents",
+                                ":agentId",
+                                "sessions",
+                                ":sessionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                },
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:11.000Z",
+                          "updatedAt": "2026-07-28T01:29:11.000Z",
+                          "uid": "35240-9a64a92c-47d7-4172-9349-7054de1601bc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:11.000Z",
+                      "updatedAt": "2026-07-28T01:29:11.000Z",
+                      "uid": "35240-89eaf48a-e12a-4602-a672-0f10328cb8a2"
+                    }
+                  ],
+                  "id": "653d6d7e-615c-473a-aced-821027980002",
+                  "createdAt": "2026-07-28T01:29:11.000Z",
+                  "updatedAt": "2026-07-28T01:29:11.000Z",
+                  "uid": "35240-653d6d7e-615c-473a-aced-821027980002"
+                },
+                {
+                  "name": "List sessions",
+                  "id": "4331008c-ecc9-478c-9eb9-b5d05fb25915",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:agentId/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":agentId",
+                        "sessions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "30ba3e76-74b0-48fc-89ed-500d7f3da596",
+                          "key": "agentId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all sessions for a specific agent."
+                  },
+                  "response": [
+                    {
+                      "id": "a3997856-3cea-4a6c-8275-acc8369aa800",
+                      "name": "Array of session objects.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/sessions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "sessions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"session_url\": \"<uri>\",\n    \"session_token\": \"<string>\",\n    \"interrupt_enabled\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"session_url\": \"<uri>\",\n    \"session_token\": \"<string>\",\n    \"interrupt_enabled\": \"<boolean>\"\n  }\n]",
+                      "createdAt": "2026-07-28T01:29:11.000Z",
+                      "updatedAt": "2026-07-28T01:29:11.000Z",
+                      "uid": "35240-a3997856-3cea-4a6c-8275-acc8369aa800"
+                    },
+                    {
+                      "id": "33ac9aa0-f232-43c1-a0b2-e6251594042c",
+                      "name": "Authentication failure.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/sessions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "sessions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:29:11.000Z",
+                      "updatedAt": "2026-07-28T01:29:11.000Z",
+                      "uid": "35240-33ac9aa0-f232-43c1-a0b2-e6251594042c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:29:11.000Z",
+                  "updatedAt": "2026-07-28T01:29:11.000Z",
+                  "uid": "35240-4331008c-ecc9-478c-9eb9-b5d05fb25915"
+                }
+              ],
+              "id": "708f4b4e-0515-452b-b44a-84be1ebc6524",
+              "createdAt": "2026-07-28T01:29:11.000Z",
+              "updatedAt": "2026-07-28T01:29:11.000Z",
+              "uid": "35240-708f4b4e-0515-452b-b44a-84be1ebc6524"
+            }
+          ],
+          "id": "65b1c88e-8eca-4f99-a326-eae04df3fc57",
+          "createdAt": "2026-07-28T01:29:11.000Z",
+          "updatedAt": "2026-07-28T01:29:11.000Z",
+          "uid": "35240-65b1c88e-8eca-4f99-a326-eae04df3fc57"
+        }
+      ],
+      "id": "409ea2ae-6d3e-4518-a6e5-3d94af869d19",
+      "createdAt": "2026-07-28T01:29:11.000Z",
+      "updatedAt": "2026-07-28T01:29:11.000Z",
+      "uid": "35240-409ea2ae-6d3e-4518-a6e5-3d94af869d19"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.d-id.com"
+    }
+  ]
+}

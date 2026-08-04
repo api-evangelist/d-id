@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "46f6a152-ab5c-4ffc-b615-e3349d9a3b0c",
+    "name": "D-ID Agents Voices API",
+    "description": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:14.000Z",
+    "updatedAt": "2026-07-28T01:29:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-46f6a152-ab5c-4ffc-b615-e3349d9a3b0c"
+  },
+  "item": [
+    {
+      "name": "tts",
+      "item": [
+        {
+          "name": "voices",
+          "item": [
+            {
+              "name": "List voices",
+              "id": "dad3f10d-7ea0-4b8a-9998-06a07885ac1c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tts/voices?provider=elevenlabs&id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tts",
+                    "voices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by voice provider.",
+                      "key": "provider",
+                      "value": "elevenlabs"
+                    },
+                    {
+                      "description": "Filter by voice ID (unique per provider).",
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve available TTS voices, optionally filtered by provider or voice ID."
+              },
+              "response": [
+                {
+                  "id": "0edc30fc-2118-4900-ab9a-20d83f565ee6",
+                  "name": "Array of voice objects.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tts/voices?provider=elevenlabs&id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tts",
+                        "voices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by voice provider.",
+                          "key": "provider",
+                          "value": "elevenlabs"
+                        },
+                        {
+                          "description": "Filter by voice ID (unique per provider).",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"access\": \"public\",\n    \"provider\": \"google\",\n    \"languages\": [\n      {\n        \"code\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"styles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"language\": \"<string>\",\n    \"config\": {\n      \"modelId\": \"<string>\"\n    },\n    \"description\": \"<string>\",\n    \"age\": \"<string>\",\n    \"useCase\": \"<string>\",\n    \"voiceType\": \"Avatar\",\n    \"isLegacy\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"gender\": \"<string>\",\n    \"access\": \"external-private\",\n    \"provider\": \"amazon\",\n    \"languages\": [\n      {\n        \"code\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"styles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"language\": \"<string>\",\n    \"config\": {\n      \"modelId\": \"<string>\"\n    },\n    \"description\": \"<string>\",\n    \"age\": \"<string>\",\n    \"useCase\": \"<string>\",\n    \"voiceType\": \"Avatar\",\n    \"isLegacy\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:29:15.000Z",
+                  "updatedAt": "2026-07-28T01:29:15.000Z",
+                  "uid": "35240-0edc30fc-2118-4900-ab9a-20d83f565ee6"
+                },
+                {
+                  "id": "2645041a-0564-4f9d-bbda-edf75763695b",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tts/voices?provider=elevenlabs&id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tts",
+                        "voices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by voice provider.",
+                          "key": "provider",
+                          "value": "elevenlabs"
+                        },
+                        {
+                          "description": "Filter by voice ID (unique per provider).",
+                          "key": "id",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:15.000Z",
+                  "updatedAt": "2026-07-28T01:29:15.000Z",
+                  "uid": "35240-2645041a-0564-4f9d-bbda-edf75763695b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:15.000Z",
+              "updatedAt": "2026-07-28T01:29:15.000Z",
+              "uid": "35240-dad3f10d-7ea0-4b8a-9998-06a07885ac1c"
+            }
+          ],
+          "id": "245aa3af-814b-42b9-ac23-ed1f45c0e930",
+          "createdAt": "2026-07-28T01:29:15.000Z",
+          "updatedAt": "2026-07-28T01:29:15.000Z",
+          "uid": "35240-245aa3af-814b-42b9-ac23-ed1f45c0e930"
+        }
+      ],
+      "id": "d77e01f8-2b49-4cc9-b0bf-a853f2897440",
+      "createdAt": "2026-07-28T01:29:15.000Z",
+      "updatedAt": "2026-07-28T01:29:15.000Z",
+      "uid": "35240-d77e01f8-2b49-4cc9-b0bf-a853f2897440"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.d-id.com"
+    }
+  ]
+}

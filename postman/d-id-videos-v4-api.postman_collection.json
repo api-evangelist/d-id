@@ -1,0 +1,834 @@
+{
+  "info": {
+    "_postman_id": "c5f79bee-e378-4e47-a59d-314ba43de2f1",
+    "name": "D-ID Agents Videos V4 API",
+    "description": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:13.000Z",
+    "updatedAt": "2026-07-28T01:29:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c5f79bee-e378-4e47-a59d-314ba43de2f1"
+  },
+  "item": [
+    {
+      "name": "videos",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a V4 video",
+              "id": "6c4d55e0-d048-4c98-8de2-7742f6a93e9f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/videos/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a0a4b638-06e2-4276-a8aa-5788fecdd1cd",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "description": "Retrieve the status and result of a specific V4 video."
+              },
+              "response": [
+                {
+                  "id": "56ba9a8a-3fb1-48f2-b50e-1ec84396ea1a",
+                  "name": "V4 video object.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/videos/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "videos",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"rejected\",\n  \"result_url\": \"<uri>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"created_by\": \"<string>\",\n  \"user_data\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:14.000Z",
+                  "updatedAt": "2026-07-28T01:29:14.000Z",
+                  "uid": "35240-56ba9a8a-3fb1-48f2-b50e-1ec84396ea1a"
+                },
+                {
+                  "id": "e9aba258-2a13-42bd-91c8-ffad79b36faa",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/videos/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "videos",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:14.000Z",
+                  "updatedAt": "2026-07-28T01:29:14.000Z",
+                  "uid": "35240-e9aba258-2a13-42bd-91c8-ffad79b36faa"
+                },
+                {
+                  "id": "3581a79d-9231-402b-82a0-8d52946637ab",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/videos/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "videos",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:14.000Z",
+                  "updatedAt": "2026-07-28T01:29:14.000Z",
+                  "uid": "35240-3581a79d-9231-402b-82a0-8d52946637ab"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-6c4d55e0-d048-4c98-8de2-7742f6a93e9f"
+            },
+            {
+              "name": "Delete a V4 video",
+              "id": "f4320cdd-dab4-479d-807b-147d2ac03c6a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/videos/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3a6e9bf8-ba6f-4b9f-82d3-138baa936c41",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ff1901f5-0f84-4c93-93d8-a4e768411d3c",
+                  "name": "Deleted V4 video object.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/videos/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "videos",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"rejected\",\n  \"result_url\": \"<uri>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"created_by\": \"<string>\",\n  \"user_data\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:14.000Z",
+                  "updatedAt": "2026-07-28T01:29:14.000Z",
+                  "uid": "35240-ff1901f5-0f84-4c93-93d8-a4e768411d3c"
+                },
+                {
+                  "id": "3657abe4-1dc2-4086-bdc1-fde7b3109afd",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/videos/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "videos",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:14.000Z",
+                  "updatedAt": "2026-07-28T01:29:14.000Z",
+                  "uid": "35240-3657abe4-1dc2-4086-bdc1-fde7b3109afd"
+                },
+                {
+                  "id": "198fe3b2-4654-4a04-9926-afc1fca22a8c",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/videos/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "videos",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:14.000Z",
+                  "updatedAt": "2026-07-28T01:29:14.000Z",
+                  "uid": "35240-198fe3b2-4654-4a04-9926-afc1fca22a8c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-f4320cdd-dab4-479d-807b-147d2ac03c6a"
+            }
+          ],
+          "id": "4bd9c37a-2b02-4e81-9520-825a32148199",
+          "createdAt": "2026-07-28T01:29:14.000Z",
+          "updatedAt": "2026-07-28T01:29:14.000Z",
+          "uid": "35240-4bd9c37a-2b02-4e81-9520-825a32148199"
+        },
+        {
+          "name": "List V4 videos",
+          "id": "13b53472-f1b4-4d53-886c-8c649808244a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/videos?limit=100&token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videos"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "key": "token",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of V4 Expressive avatar videos."
+          },
+          "response": [
+            {
+              "id": "1daef201-d0fb-41f1-82bb-023005b262c7",
+              "name": "Paginated list of V4 videos.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/videos?limit=100&token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"videos\": [\n    {\n      \"id\": \"<string>\",\n      \"status\": \"error\",\n      \"result_url\": \"<uri>\",\n      \"created_at\": \"<dateTime>\",\n      \"modified_at\": \"<dateTime>\",\n      \"created_by\": \"<string>\",\n      \"user_data\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"status\": \"created\",\n      \"result_url\": \"<uri>\",\n      \"created_at\": \"<dateTime>\",\n      \"modified_at\": \"<dateTime>\",\n      \"created_by\": \"<string>\",\n      \"user_data\": \"<string>\"\n    }\n  ],\n  \"token\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-1daef201-d0fb-41f1-82bb-023005b262c7"
+            },
+            {
+              "id": "b161aca4-1043-4487-836e-f06ea0cf8807",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/videos?limit=100&token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-b161aca4-1043-4487-836e-f06ea0cf8807"
+            }
+          ],
+          "createdAt": "2026-07-28T01:29:14.000Z",
+          "updatedAt": "2026-07-28T01:29:14.000Z",
+          "uid": "35240-13b53472-f1b4-4d53-886c-8c649808244a"
+        },
+        {
+          "name": "Create a V4 video",
+          "id": "2da07757-b71f-486e-bd17-a6e6ad2800ab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"script\": {\n    \"type\": \"text\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"amazon\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"presenter_id\": \"<string>\",\n  \"config\": {},\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\",\n  \"user_data\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/videos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "videos"
+              ]
+            },
+            "description": "Generate a V4 Expressive full-HD avatar video."
+          },
+          "response": [
+            {
+              "id": "82421144-8ab0-4be9-a5cf-b6289a5f0ad1",
+              "name": "V4 video created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"text\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"amazon\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"presenter_id\": \"<string>\",\n  \"config\": {},\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\",\n  \"user_data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"rejected\",\n  \"result_url\": \"<uri>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\",\n  \"created_by\": \"<string>\",\n  \"user_data\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-82421144-8ab0-4be9-a5cf-b6289a5f0ad1"
+            },
+            {
+              "id": "3da70267-6bd7-430a-9c10-055d32b5c84f",
+              "name": "Bad request \u2014 invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"text\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"amazon\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"presenter_id\": \"<string>\",\n  \"config\": {},\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\",\n  \"user_data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-3da70267-6bd7-430a-9c10-055d32b5c84f"
+            },
+            {
+              "id": "850d5739-89bc-4b10-924c-e0f8b8464766",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"text\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"amazon\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"presenter_id\": \"<string>\",\n  \"config\": {},\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\",\n  \"user_data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-850d5739-89bc-4b10-924c-e0f8b8464766"
+            },
+            {
+              "id": "f7b6e93b-acb4-4707-ac8c-12c699edd340",
+              "name": "Insufficient credits.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"text\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"amazon\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"presenter_id\": \"<string>\",\n  \"config\": {},\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\",\n  \"user_data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/videos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "videos"
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:14.000Z",
+              "updatedAt": "2026-07-28T01:29:14.000Z",
+              "uid": "35240-f7b6e93b-acb4-4707-ac8c-12c699edd340"
+            }
+          ],
+          "createdAt": "2026-07-28T01:29:14.000Z",
+          "updatedAt": "2026-07-28T01:29:14.000Z",
+          "uid": "35240-2da07757-b71f-486e-bd17-a6e6ad2800ab"
+        }
+      ],
+      "id": "a816ea22-7e54-4d50-a677-0bc5d4d0a278",
+      "createdAt": "2026-07-28T01:29:14.000Z",
+      "updatedAt": "2026-07-28T01:29:14.000Z",
+      "uid": "35240-a816ea22-7e54-4d50-a677-0bc5d4d0a278"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.d-id.com"
+    }
+  ]
+}

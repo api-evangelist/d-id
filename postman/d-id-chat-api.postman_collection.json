@@ -1,0 +1,282 @@
+{
+  "info": {
+    "_postman_id": "56790018-c2df-47d1-82d6-eb6069fe2750",
+    "name": "D-ID Agents Chat API",
+    "description": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:08.000Z",
+    "updatedAt": "2026-07-28T01:29:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-56790018-c2df-47d1-82d6-eb6069fe2750"
+  },
+  "item": [
+    {
+      "name": "agents",
+      "item": [
+        {
+          "name": "{agentId}",
+          "item": [
+            {
+              "name": "chat",
+              "item": [
+                {
+                  "name": "{chatId}",
+                  "item": [
+                    {
+                      "name": "Send a chat message",
+                      "id": "d528877a-782d-4ab7-8cba-3ca483822546",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ],\n  \"streamId\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"chatMode\": \"Functional\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/chat/:chatId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "chat",
+                            ":chatId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0f893526-d41e-428a-8b74-6e0b7f266e22",
+                              "key": "agentId",
+                              "value": "<string>",
+                              "description": "(Required) Agent identifier."
+                            },
+                            {
+                              "id": "1918bce3-37ac-46d2-8bb1-b9728c78ac81",
+                              "key": "chatId",
+                              "value": "<string>",
+                              "description": "(Required) Chat identifier."
+                            }
+                          ]
+                        },
+                        "description": "Send a message to an agent's chat and receive a response including optional knowledge matches, video ID, and chat mode.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "0c2dae17-701b-4d61-9f84-b812c08f79a6",
+                          "name": "Chat response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ],\n  \"streamId\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"chatMode\": \"Functional\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/agents/:agentId/chat/:chatId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agents",
+                                ":agentId",
+                                "chat",
+                                ":chatId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                },
+                                {
+                                  "key": "chatId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"matches\": [\n    {\n      \"id\": \"<string>\",\n      \"data\": \"<string>\",\n      \"title\": \"<string>\",\n      \"document_id\": \"<string>\",\n      \"knowledge_id\": \"<string>\",\n      \"source_url\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"data\": \"<string>\",\n      \"title\": \"<string>\",\n      \"document_id\": \"<string>\",\n      \"knowledge_id\": \"<string>\",\n      \"source_url\": \"<uri>\"\n    }\n  ],\n  \"documentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"result\": \"<string>\",\n  \"chatMode\": \"<string>\",\n  \"videoId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:08.000Z",
+                          "updatedAt": "2026-07-28T01:29:08.000Z",
+                          "uid": "35240-0c2dae17-701b-4d61-9f84-b812c08f79a6"
+                        },
+                        {
+                          "id": "8fe40fd6-a563-4dc3-b541-f979a5311e1b",
+                          "name": "Authentication failure.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ],\n  \"streamId\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"chatMode\": \"Functional\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/agents/:agentId/chat/:chatId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agents",
+                                ":agentId",
+                                "chat",
+                                ":chatId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "agentId"
+                                },
+                                {
+                                  "key": "chatId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:08.000Z",
+                          "updatedAt": "2026-07-28T01:29:08.000Z",
+                          "uid": "35240-8fe40fd6-a563-4dc3-b541-f979a5311e1b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:08.000Z",
+                      "updatedAt": "2026-07-28T01:29:08.000Z",
+                      "uid": "35240-d528877a-782d-4ab7-8cba-3ca483822546"
+                    }
+                  ],
+                  "id": "725d5992-61e5-4762-b211-5ad72266a94f",
+                  "createdAt": "2026-07-28T01:29:08.000Z",
+                  "updatedAt": "2026-07-28T01:29:08.000Z",
+                  "uid": "35240-725d5992-61e5-4762-b211-5ad72266a94f"
+                }
+              ],
+              "id": "70d8cb7e-7a8e-4f77-8307-d5f6d14b55b3",
+              "createdAt": "2026-07-28T01:29:08.000Z",
+              "updatedAt": "2026-07-28T01:29:08.000Z",
+              "uid": "35240-70d8cb7e-7a8e-4f77-8307-d5f6d14b55b3"
+            }
+          ],
+          "id": "5dd4d9f2-2729-4abe-bc65-387143518baa",
+          "createdAt": "2026-07-28T01:29:08.000Z",
+          "updatedAt": "2026-07-28T01:29:08.000Z",
+          "uid": "35240-5dd4d9f2-2729-4abe-bc65-387143518baa"
+        }
+      ],
+      "id": "b19a0e27-bcf0-4a1f-a98b-b2bba3354863",
+      "createdAt": "2026-07-28T01:29:08.000Z",
+      "updatedAt": "2026-07-28T01:29:08.000Z",
+      "uid": "35240-b19a0e27-bcf0-4a1f-a98b-b2bba3354863"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.d-id.com"
+    }
+  ]
+}

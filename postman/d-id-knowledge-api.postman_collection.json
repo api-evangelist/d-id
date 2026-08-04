@@ -1,0 +1,1610 @@
+{
+  "info": {
+    "_postman_id": "441d32d9-f479-42dd-ac3d-a6c6e935c141",
+    "name": "D-ID Agents Knowledge API",
+    "description": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:10.000Z",
+    "updatedAt": "2026-07-28T01:29:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-441d32d9-f479-42dd-ac3d-a6c6e935c141"
+  },
+  "item": [
+    {
+      "name": "knowledge",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a knowledge base",
+              "id": "2369da72-66e9-4dbb-b576-de7da1a94d46",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3e1e0d2b-bfb4-427f-af62-f1267b8332ea",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific knowledge base by ID."
+              },
+              "response": [
+                {
+                  "id": "29843b9b-f1ea-46ad-a101-03960507a0da",
+                  "name": "Knowledge base object.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-29843b9b-f1ea-46ad-a101-03960507a0da"
+                },
+                {
+                  "id": "c7c24895-f0a8-4cf4-a9a0-913acf38e9a1",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-c7c24895-f0a8-4cf4-a9a0-913acf38e9a1"
+                },
+                {
+                  "id": "77a95956-ced4-4692-ae22-4686aa427487",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-77a95956-ced4-4692-ae22-4686aa427487"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-2369da72-66e9-4dbb-b576-de7da1a94d46"
+            },
+            {
+              "name": "Update a knowledge base",
+              "id": "56706c44-2988-4e93-873f-0563d52cbdd5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ea67b3b2-8cc5-4507-9176-702f4a0c374d",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "83368f04-ff01-461f-8bf6-fccb1d609abd",
+                  "name": "Updated knowledge base.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-83368f04-ff01-461f-8bf6-fccb1d609abd"
+                },
+                {
+                  "id": "c2225fe1-5037-4f85-9a0d-25dc8cc05d85",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-c2225fe1-5037-4f85-9a0d-25dc8cc05d85"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-56706c44-2988-4e93-873f-0563d52cbdd5"
+            },
+            {
+              "name": "Delete a knowledge base",
+              "id": "ac596d06-96b3-417f-9d77-5b044450f7cb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c346d7b2-a795-4981-8827-75a88c8f4e3a",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6ebeb87d-6855-4451-a34b-cd28c0ac37e0",
+                  "name": "Knowledge base deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-6ebeb87d-6855-4451-a34b-cd28c0ac37e0"
+                },
+                {
+                  "id": "5b387080-83d4-4fdb-8edf-5fcb0cce0980",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-5b387080-83d4-4fdb-8edf-5fcb0cce0980"
+                },
+                {
+                  "id": "888a2072-55c0-431f-bf61-07b041025e19",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-888a2072-55c0-431f-bf61-07b041025e19"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-ac596d06-96b3-417f-9d77-5b044450f7cb"
+            }
+          ],
+          "id": "0aff587f-8de2-41ed-bd33-73ae886adc10",
+          "createdAt": "2026-07-28T01:29:10.000Z",
+          "updatedAt": "2026-07-28T01:29:10.000Z",
+          "uid": "35240-0aff587f-8de2-41ed-bd33-73ae886adc10"
+        },
+        {
+          "name": "{knowledgeId}",
+          "item": [
+            {
+              "name": "documents",
+              "item": [
+                {
+                  "name": "{documentId}",
+                  "item": [
+                    {
+                      "name": "Get a document",
+                      "id": "fd13e20b-2c5c-4611-93f6-241c0e12cf7c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "knowledge",
+                            ":knowledgeId",
+                            "documents",
+                            ":documentId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6b99e937-92bc-4b5a-a349-90f1f0e19205",
+                              "key": "knowledgeId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "61d5ddf1-d8c8-4e59-abf3-608c114a02ec",
+                              "key": "documentId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "60c9d360-f9a8-4123-a198-210540518b37",
+                          "name": "Document object.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "knowledge",
+                                ":knowledgeId",
+                                "documents",
+                                ":documentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "knowledgeId"
+                                },
+                                {
+                                  "key": "documentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T01:29:10.000Z",
+                          "updatedAt": "2026-07-28T01:29:10.000Z",
+                          "uid": "35240-60c9d360-f9a8-4123-a198-210540518b37"
+                        },
+                        {
+                          "id": "d9c0ae58-8d10-4632-926d-868c79fa5ac3",
+                          "name": "Authentication failure.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "knowledge",
+                                ":knowledgeId",
+                                "documents",
+                                ":documentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "knowledgeId"
+                                },
+                                {
+                                  "key": "documentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:10.000Z",
+                          "updatedAt": "2026-07-28T01:29:10.000Z",
+                          "uid": "35240-d9c0ae58-8d10-4632-926d-868c79fa5ac3"
+                        },
+                        {
+                          "id": "4e641880-c687-46fe-a2ee-41b389516eeb",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "knowledge",
+                                ":knowledgeId",
+                                "documents",
+                                ":documentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "knowledgeId"
+                                },
+                                {
+                                  "key": "documentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:10.000Z",
+                          "updatedAt": "2026-07-28T01:29:10.000Z",
+                          "uid": "35240-4e641880-c687-46fe-a2ee-41b389516eeb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:10.000Z",
+                      "updatedAt": "2026-07-28T01:29:10.000Z",
+                      "uid": "35240-fd13e20b-2c5c-4611-93f6-241c0e12cf7c"
+                    },
+                    {
+                      "name": "Delete a document",
+                      "id": "35fec7a8-5359-40bc-acff-39e910af5570",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "knowledge",
+                            ":knowledgeId",
+                            "documents",
+                            ":documentId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9f8aa781-b593-47e9-8494-eec6fbcae007",
+                              "key": "knowledgeId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "3a09b3d8-da4f-456c-85db-52df10a07ad1",
+                              "key": "documentId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2a42cadd-cc37-4c82-a1aa-7541d421ed9a",
+                          "name": "Document deleted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "knowledge",
+                                ":knowledgeId",
+                                "documents",
+                                ":documentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "knowledgeId"
+                                },
+                                {
+                                  "key": "documentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:29:10.000Z",
+                          "updatedAt": "2026-07-28T01:29:10.000Z",
+                          "uid": "35240-2a42cadd-cc37-4c82-a1aa-7541d421ed9a"
+                        },
+                        {
+                          "id": "dfc91b60-5d7b-42c2-9712-af4eba7417a9",
+                          "name": "Authentication failure.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "knowledge",
+                                ":knowledgeId",
+                                "documents",
+                                ":documentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "knowledgeId"
+                                },
+                                {
+                                  "key": "documentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:10.000Z",
+                          "updatedAt": "2026-07-28T01:29:10.000Z",
+                          "uid": "35240-dfc91b60-5d7b-42c2-9712-af4eba7417a9"
+                        },
+                        {
+                          "id": "45bf74de-49fe-4df6-b471-94cecffc4272",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents/:documentId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "knowledge",
+                                ":knowledgeId",
+                                "documents",
+                                ":documentId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "knowledgeId"
+                                },
+                                {
+                                  "key": "documentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:29:10.000Z",
+                          "updatedAt": "2026-07-28T01:29:10.000Z",
+                          "uid": "35240-45bf74de-49fe-4df6-b471-94cecffc4272"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:29:10.000Z",
+                      "updatedAt": "2026-07-28T01:29:10.000Z",
+                      "uid": "35240-35fec7a8-5359-40bc-acff-39e910af5570"
+                    }
+                  ],
+                  "id": "288a6ad2-b419-4818-8d26-b82af8fb00b2",
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-288a6ad2-b419-4818-8d26-b82af8fb00b2"
+                },
+                {
+                  "name": "List documents",
+                  "id": "89972255-85c0-4c9a-9838-2b63772a2a1e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":knowledgeId",
+                        "documents"
+                      ],
+                      "variable": [
+                        {
+                          "id": "edb4d488-20b1-4d77-945a-eeb3168093bf",
+                          "key": "knowledgeId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all documents in a knowledge base."
+                  },
+                  "response": [
+                    {
+                      "id": "dcdc4a4d-4284-4fef-8b06-6396e49e19da",
+                      "name": "Array of document objects.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "knowledge",
+                            ":knowledgeId",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "knowledgeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"type\": \"knowledge\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"owner_id\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"modified_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"type\": \"document\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"owner_id\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"modified_at\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T01:29:10.000Z",
+                      "updatedAt": "2026-07-28T01:29:10.000Z",
+                      "uid": "35240-dcdc4a4d-4284-4fef-8b06-6396e49e19da"
+                    },
+                    {
+                      "id": "6846af53-9a68-47c4-947b-3b9296dbc67d",
+                      "name": "Authentication failure.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "knowledge",
+                            ":knowledgeId",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "knowledgeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:29:10.000Z",
+                      "updatedAt": "2026-07-28T01:29:10.000Z",
+                      "uid": "35240-6846af53-9a68-47c4-947b-3b9296dbc67d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-89972255-85c0-4c9a-9838-2b63772a2a1e"
+                },
+                {
+                  "name": "Create a document",
+                  "id": "b95c42da-528e-4190-8cd3-031372586566",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"source_url\": \"<uri>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "knowledge",
+                        ":knowledgeId",
+                        "documents"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7a9af394-8326-48e7-9a3f-8738c6383bda",
+                          "key": "knowledgeId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Add a document to an existing knowledge base."
+                  },
+                  "response": [
+                    {
+                      "id": "69dc5349-777b-424d-8232-f9b08ae17605",
+                      "name": "Created document.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"source_url\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "knowledge",
+                            ":knowledgeId",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "knowledgeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:29:10.000Z",
+                      "updatedAt": "2026-07-28T01:29:10.000Z",
+                      "uid": "35240-69dc5349-777b-424d-8232-f9b08ae17605"
+                    },
+                    {
+                      "id": "51c051cc-9ab1-4aa3-be1b-233a7acc56e7",
+                      "name": "Authentication failure.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"source_url\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/knowledge/:knowledgeId/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "knowledge",
+                            ":knowledgeId",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "knowledgeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:29:10.000Z",
+                      "updatedAt": "2026-07-28T01:29:10.000Z",
+                      "uid": "35240-51c051cc-9ab1-4aa3-be1b-233a7acc56e7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:29:10.000Z",
+                  "updatedAt": "2026-07-28T01:29:10.000Z",
+                  "uid": "35240-b95c42da-528e-4190-8cd3-031372586566"
+                }
+              ],
+              "id": "2add5f69-6651-43e9-ade3-e7ad6c6ebe34",
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-2add5f69-6651-43e9-ade3-e7ad6c6ebe34"
+            }
+          ],
+          "id": "bfdb53ec-50b4-49cd-a49c-bf12a716bbb2",
+          "createdAt": "2026-07-28T01:29:10.000Z",
+          "updatedAt": "2026-07-28T01:29:10.000Z",
+          "uid": "35240-bfdb53ec-50b4-49cd-a49c-bf12a716bbb2"
+        },
+        {
+          "name": "List knowledge bases",
+          "id": "9fa019b4-bb1a-4272-97f8-e35672846df7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/knowledge",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "knowledge"
+              ]
+            },
+            "description": "Retrieve all knowledge bases for the authenticated user."
+          },
+          "response": [
+            {
+              "id": "e3a2b3b8-f359-41ae-a110-6b094eefefc6",
+              "name": "Array of knowledge base objects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"type\": \"knowledge\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"owner_id\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"modified_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"type\": \"document\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"owner_id\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"modified_at\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-e3a2b3b8-f359-41ae-a110-6b094eefefc6"
+            },
+            {
+              "id": "80823321-90a1-41a2-8260-0185fb43366d",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-80823321-90a1-41a2-8260-0185fb43366d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:29:10.000Z",
+          "updatedAt": "2026-07-28T01:29:10.000Z",
+          "uid": "35240-9fa019b4-bb1a-4272-97f8-e35672846df7"
+        },
+        {
+          "name": "Create a knowledge base",
+          "id": "af10151a-2903-4c84-8b9c-1d8555515aed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/knowledge",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "knowledge"
+              ]
+            },
+            "description": "Create a new knowledge base for RAG. Each knowledge base can hold up to 5 documents.\n"
+          },
+          "response": [
+            {
+              "id": "ecafe41c-974d-42cd-9252-3ab7c0a13046",
+              "name": "Created knowledge base.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"document\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"created_by\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"modified_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-ecafe41c-974d-42cd-9252-3ab7c0a13046"
+            },
+            {
+              "id": "f2c55097-57f9-4dce-8604-c223c0e7e337",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/knowledge",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "knowledge"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:10.000Z",
+              "updatedAt": "2026-07-28T01:29:10.000Z",
+              "uid": "35240-f2c55097-57f9-4dce-8604-c223c0e7e337"
+            }
+          ],
+          "createdAt": "2026-07-28T01:29:10.000Z",
+          "updatedAt": "2026-07-28T01:29:10.000Z",
+          "uid": "35240-af10151a-2903-4c84-8b9c-1d8555515aed"
+        }
+      ],
+      "id": "86280d01-ef93-4f98-a246-51733b5ebbdf",
+      "createdAt": "2026-07-28T01:29:10.000Z",
+      "updatedAt": "2026-07-28T01:29:10.000Z",
+      "uid": "35240-86280d01-ef93-4f98-a246-51733b5ebbdf"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.d-id.com"
+    }
+  ]
+}

@@ -1,0 +1,906 @@
+{
+  "info": {
+    "_postman_id": "5612d001-433a-4ed4-9cfd-c8252350b705",
+    "name": "D-ID Agents API",
+    "description": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:29:07.000Z",
+    "updatedAt": "2026-07-28T01:29:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5612d001-433a-4ed4-9cfd-c8252350b705"
+  },
+  "item": [
+    {
+      "name": "agents",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get an agent",
+              "id": "dbfcf538-712a-4877-95be-d58cf1af6509",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agents/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d211e461-0b2c-47cc-978a-0cc009e7f180",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific agent by ID."
+              },
+              "response": [
+                {
+                  "id": "1b63c28a-59e8-420f-a4c5-0e76f24f0b59",
+                  "name": "Agent object.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"presenter\": {\n    \"type\": \"clip\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"provider\": \"<string>\",\n  \"error\": {},\n  \"triggers\": {},\n  \"client_key\": \"<string>\",\n  \"metadata\": {},\n  \"embed\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-1b63c28a-59e8-420f-a4c5-0e76f24f0b59"
+                },
+                {
+                  "id": "cd609df7-0e77-4ac9-87a7-4a832462f20e",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-cd609df7-0e77-4ac9-87a7-4a832462f20e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-dbfcf538-712a-4877-95be-d58cf1af6509"
+            },
+            {
+              "name": "Update an agent",
+              "id": "6d1cc86f-409b-4ea7-a942-9f7e213b44ce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agents/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "61821540-9559-44a1-a031-79edb2f81a24",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "description": "Update configuration for an existing agent."
+              },
+              "response": [
+                {
+                  "id": "77a8829d-fb43-4c52-b962-cf5fb75fa3b1",
+                  "name": "Updated agent object.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"presenter\": {\n    \"type\": \"clip\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"provider\": \"<string>\",\n  \"error\": {},\n  \"triggers\": {},\n  \"client_key\": \"<string>\",\n  \"metadata\": {},\n  \"embed\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-77a8829d-fb43-4c52-b962-cf5fb75fa3b1"
+                },
+                {
+                  "id": "9a0959c7-9215-4c7c-a0e1-f5f50916ab91",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-9a0959c7-9215-4c7c-a0e1-f5f50916ab91"
+                },
+                {
+                  "id": "6c8e9c03-58c7-419c-aa8d-3e7aa874ebe3",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-6c8e9c03-58c7-419c-aa8d-3e7aa874ebe3"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-6d1cc86f-409b-4ea7-a942-9f7e213b44ce"
+            },
+            {
+              "name": "Delete an agent",
+              "id": "3d36a3f1-13e4-40d1-85bd-34ab119ec157",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agents/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "11a868a4-a87c-4e8b-9b2f-20875f958dac",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "description": "Permanently delete an agent."
+              },
+              "response": [
+                {
+                  "id": "0d416fbb-d5db-4424-9df4-6803317c3cac",
+                  "name": "Agent deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-0d416fbb-d5db-4424-9df4-6803317c3cac"
+                },
+                {
+                  "id": "db7d96c3-399c-4d58-b4c1-ed1597ce3ac7",
+                  "name": "Authentication failure.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-db7d96c3-399c-4d58-b4c1-ed1597ce3ac7"
+                },
+                {
+                  "id": "d660a398-c667-4501-b270-e80bac9443c3",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:29:07.000Z",
+                  "updatedAt": "2026-07-28T01:29:07.000Z",
+                  "uid": "35240-d660a398-c667-4501-b270-e80bac9443c3"
+                }
+              ],
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-3d36a3f1-13e4-40d1-85bd-34ab119ec157"
+            }
+          ],
+          "id": "ec7070fc-0b27-413f-8070-631ba96e2363",
+          "createdAt": "2026-07-28T01:29:07.000Z",
+          "updatedAt": "2026-07-28T01:29:07.000Z",
+          "uid": "35240-ec7070fc-0b27-413f-8070-631ba96e2363"
+        },
+        {
+          "name": "List agents",
+          "id": "5c0e17e4-501c-4c75-b40c-ef0802507452",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/agents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "agents"
+              ]
+            },
+            "description": "Retrieve all agents belonging to the authenticated user."
+          },
+          "response": [
+            {
+              "id": "f8fd11e1-abc1-4271-b056-3e49ee0209b8",
+              "name": "Array of agent objects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"preview_description\": \"<string>\",\n    \"presenter\": {\n      \"type\": \"clip\",\n      \"source_url\": \"<uri>\",\n      \"presenter_id\": \"<string>\",\n      \"voice\": {\n        \"type\": \"<string>\",\n        \"voice_id\": \"<string>\"\n      }\n    },\n    \"llm\": {\n      \"provider\": \"custom\",\n      \"model\": \"<string>\",\n      \"instructions\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    \"knowledge\": {\n      \"id\": \"<string>\"\n    },\n    \"starter_message\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"greetings\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"provider\": \"<string>\",\n    \"error\": {},\n    \"triggers\": {},\n    \"client_key\": \"<string>\",\n    \"metadata\": {},\n    \"embed\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"preview_description\": \"<string>\",\n    \"presenter\": {\n      \"type\": \"expressive\",\n      \"source_url\": \"<uri>\",\n      \"presenter_id\": \"<string>\",\n      \"voice\": {\n        \"type\": \"<string>\",\n        \"voice_id\": \"<string>\"\n      }\n    },\n    \"llm\": {\n      \"provider\": \"openai\",\n      \"model\": \"<string>\",\n      \"instructions\": \"<string>\",\n      \"template\": \"<string>\"\n    },\n    \"knowledge\": {\n      \"id\": \"<string>\"\n    },\n    \"starter_message\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"greetings\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"provider\": \"<string>\",\n    \"error\": {},\n    \"triggers\": {},\n    \"client_key\": \"<string>\",\n    \"metadata\": {},\n    \"embed\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-f8fd11e1-abc1-4271-b056-3e49ee0209b8"
+            },
+            {
+              "id": "1d510051-4f60-450b-9ef2-5cba5ace67c1",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-1d510051-4f60-450b-9ef2-5cba5ace67c1"
+            }
+          ],
+          "createdAt": "2026-07-28T01:29:07.000Z",
+          "updatedAt": "2026-07-28T01:29:07.000Z",
+          "uid": "35240-5c0e17e4-501c-4c75-b40c-ef0802507452"
+        },
+        {
+          "name": "Create an agent",
+          "id": "ef70bb7f-d2ea-4ac6-8a50-664d40ce394d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "Optional ElevenLabs API key for TTS with IVC voices.",
+                "key": "x-api-key-external",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "agents"
+              ]
+            },
+            "description": "Create a new interactive AI agent combining a digital avatar presenter, an LLM backend, and an optional knowledge base.\n"
+          },
+          "response": [
+            {
+              "id": "ab8219a9-2473-4c3d-981f-59c0c2480d3f",
+              "name": "Created agent object.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Optional ElevenLabs API key for TTS with IVC voices.",
+                    "key": "x-api-key-external",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"presenter\": {\n    \"type\": \"clip\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"provider\": \"<string>\",\n  \"error\": {},\n  \"triggers\": {},\n  \"client_key\": \"<string>\",\n  \"metadata\": {},\n  \"embed\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-ab8219a9-2473-4c3d-981f-59c0c2480d3f"
+            },
+            {
+              "id": "25b02b2c-8455-45dc-b92f-c7c4d08aa562",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Optional ElevenLabs API key for TTS with IVC voices.",
+                    "key": "x-api-key-external",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"talk\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"external\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"kind\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:29:07.000Z",
+              "updatedAt": "2026-07-28T01:29:07.000Z",
+              "uid": "35240-25b02b2c-8455-45dc-b92f-c7c4d08aa562"
+            }
+          ],
+          "createdAt": "2026-07-28T01:29:07.000Z",
+          "updatedAt": "2026-07-28T01:29:07.000Z",
+          "uid": "35240-ef70bb7f-d2ea-4ac6-8a50-664d40ce394d"
+        }
+      ],
+      "id": "dd9c1faa-fa02-45e8-844e-da841520b9ab",
+      "createdAt": "2026-07-28T01:29:07.000Z",
+      "updatedAt": "2026-07-28T01:29:07.000Z",
+      "uid": "35240-dd9c1faa-fa02-45e8-844e-da841520b9ab"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.d-id.com"
+    }
+  ]
+}

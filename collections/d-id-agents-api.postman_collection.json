@@ -1,0 +1,927 @@
+{
+  "item": [
+    {
+      "id": "e3d509c8-767e-432f-9a1a-07d8e6919318",
+      "name": "Agents",
+      "description": {
+        "content": "Create and manage AI agent definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c123a3b-bcfa-4c83-98a4-1f0e4695d90c",
+          "name": "List agents",
+          "request": {
+            "name": "List agents",
+            "description": {
+              "content": "Retrieve all agents belonging to the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a42c2335-29df-4c6e-9b29-445dae316fea",
+              "name": "Array of agent objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"preview_description\": \"string\",\n    \"presenter\": {\n      \"type\": \"clip\",\n      \"source_url\": \"https://HEVu.neeDQQOjPGJ69grA9Lt5SKiU+2D0rCr7fRfYNPxufbE\",\n      \"presenter_id\": \"string\",\n      \"voice\": {\n        \"type\": \"string\",\n        \"voice_id\": \"string\"\n      }\n    },\n    \"llm\": {\n      \"provider\": \"d-id\",\n      \"model\": \"string\",\n      \"instructions\": \"string\",\n      \"template\": \"string\"\n    },\n    \"knowledge\": {\n      \"id\": \"string\"\n    },\n    \"starter_message\": [\n      \"string\",\n      \"string\"\n    ],\n    \"greetings\": [\n      \"string\",\n      \"string\"\n    ],\n    \"provider\": \"d-id-agents\",\n    \"error\": {},\n    \"triggers\": {},\n    \"client_key\": \"string\",\n    \"metadata\": {},\n    \"embed\": false\n  },\n  {\n    \"id\": \"string\",\n    \"preview_description\": \"string\",\n    \"presenter\": {\n      \"type\": \"clip\",\n      \"source_url\": \"http://XEhBtunAAZZmJHBgbElWxIlcHnYadN.cvacBY8Vzr0waB7XI6DVRYdCbiItldoVyXHrjykr-mQDKnUz6hDixL\",\n      \"presenter_id\": \"string\",\n      \"voice\": {\n        \"type\": \"string\",\n        \"voice_id\": \"string\"\n      }\n    },\n    \"llm\": {\n      \"provider\": \"openai\",\n      \"model\": \"string\",\n      \"instructions\": \"string\",\n      \"template\": \"string\"\n    },\n    \"knowledge\": {\n      \"id\": \"string\"\n    },\n    \"starter_message\": [\n      \"string\",\n      \"string\"\n    ],\n    \"greetings\": [\n      \"string\",\n      \"string\"\n    ],\n    \"provider\": \"d-id-agents\",\n    \"error\": {},\n    \"triggers\": {},\n    \"client_key\": \"string\",\n    \"metadata\": {},\n    \"embed\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed6022ef-9291-4b15-bbaf-cdd0ca27f228",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ea02ba3-f7cf-472f-96f2-2cb9a37d5810",
+          "name": "Create an agent",
+          "request": {
+            "name": "Create an agent",
+            "description": {
+              "content": "Create a new interactive AI agent combining a digital avatar presenter, an LLM backend, and an optional knowledge base.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Optional ElevenLabs API key for TTS with IVC voices.",
+                "key": "x-api-key-external",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc21683a-73af-4a19-a124-b3f159f18747",
+              "name": "Created agent object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional ElevenLabs API key for TTS with IVC voices.",
+                    "key": "x-api-key-external",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"preview_description\": \"string\",\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"string\"\n  },\n  \"starter_message\": [\n    \"string\",\n    \"string\"\n  ],\n  \"greetings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"provider\": \"d-id-agents\",\n  \"error\": {},\n  \"triggers\": {},\n  \"client_key\": \"string\",\n  \"metadata\": {},\n  \"embed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a567f1a-9c36-4b96-aa60-db3c132f1a39",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional ElevenLabs API key for TTS with IVC voices.",
+                    "key": "x-api-key-external",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dc5bc3e-b673-444f-b37f-1272ed85c705",
+          "name": "Get an agent",
+          "request": {
+            "name": "Get an agent",
+            "description": {
+              "content": "Retrieve details of a specific agent by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da571be7-b747-41cd-90bc-41a123d79f48",
+              "name": "Agent object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"preview_description\": \"string\",\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"string\"\n  },\n  \"starter_message\": [\n    \"string\",\n    \"string\"\n  ],\n  \"greetings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"provider\": \"d-id-agents\",\n  \"error\": {},\n  \"triggers\": {},\n  \"client_key\": \"string\",\n  \"metadata\": {},\n  \"embed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca8f99ad-3514-459b-bb85-10ad87122dde",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9daae8d-c15d-48c2-aa18-2b5784974849",
+          "name": "Update an agent",
+          "request": {
+            "name": "Update an agent",
+            "description": {
+              "content": "Update configuration for an existing agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "570d8d16-9566-4024-8cf7-9f893cb49d20",
+              "name": "Updated agent object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"preview_description\": \"string\",\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"string\"\n  },\n  \"starter_message\": [\n    \"string\",\n    \"string\"\n  ],\n  \"greetings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"provider\": \"d-id-agents\",\n  \"error\": {},\n  \"triggers\": {},\n  \"client_key\": \"string\",\n  \"metadata\": {},\n  \"embed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bd918fe-5d48-4b80-9ac5-69d6052b5154",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9217fbe0-2e55-4db7-b777-15dabdf50b83",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"presenter\": {\n    \"type\": \"<string>\",\n    \"source_url\": \"<uri>\",\n    \"presenter_id\": \"<string>\",\n    \"voice\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\"\n    }\n  },\n  \"preview_name\": \"<string>\",\n  \"preview_description\": \"<string>\",\n  \"llm\": {\n    \"provider\": \"<string>\",\n    \"model\": \"<string>\",\n    \"instructions\": \"<string>\",\n    \"template\": \"<string>\"\n  },\n  \"knowledge\": {\n    \"id\": \"<string>\"\n  },\n  \"starter_message\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"greetings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_data\": \"<string>\",\n  \"embed\": \"<boolean>\",\n  \"triggers\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ad64ec9-f7ca-4afc-94a1-6a47f40fac09",
+          "name": "Delete an agent",
+          "request": {
+            "name": "Delete an agent",
+            "description": {
+              "content": "Permanently delete an agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35cd33e7-dc3c-499c-a935-88af54b5a27b",
+              "name": "Agent deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cc8fdd3-5d3f-4f20-8026-f9d8e0337fbe",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7afa8157-6f95-4a21-bbe1-f505f6124d30",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d-id.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "98c57b79-ab62-4ad2-a71d-cd74ddf2e65b",
+    "name": "D-ID Agents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "D-ID Agents Credits API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/credits"
+          },
+          "docs": "Retrieve the authenticated user's credit balance and expiration details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,200 @@
+{
+  "item": [
+    {
+      "id": "2a77b387-82e5-4c04-8a2c-80ac7b44b1b7",
+      "name": "Voices",
+      "description": {
+        "content": "List available TTS voices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1184081f-fe58-425d-ae71-d586d20a4437",
+          "name": "List voices",
+          "request": {
+            "name": "List voices",
+            "description": {
+              "content": "Retrieve available TTS voices, optionally filtered by provider or voice ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tts",
+                "voices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "Filter by voice provider."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter by voice ID (unique per provider)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c50d03d8-12ec-4359-8c08-9647cdb91bed",
+              "name": "Array of voice objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tts",
+                    "voices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"access\": \"public\",\n    \"provider\": \"google\",\n    \"languages\": [\n      {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"styles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\",\n    \"config\": {\n      \"modelId\": \"string\"\n    },\n    \"description\": \"string\",\n    \"age\": \"string\",\n    \"useCase\": \"string\",\n    \"voiceType\": \"CloneVoice\",\n    \"isLegacy\": false\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"access\": \"public\",\n    \"provider\": \"azure-openai\",\n    \"languages\": [\n      {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"styles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\",\n    \"config\": {\n      \"modelId\": \"string\"\n    },\n    \"description\": \"string\",\n    \"age\": \"string\",\n    \"useCase\": \"string\",\n    \"voiceType\": \"Avatar\",\n    \"isLegacy\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5bda648-2d2b-47d6-8506-2e0d73f5e702",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tts",
+                    "voices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d-id.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51fc8f0c-c265-4ff4-be6b-c6c60bbd97c8",
+    "name": "D-ID Agents Voices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+      "type": "text/plain"
+    }
+  }
+}

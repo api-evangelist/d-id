@@ -1,0 +1,1002 @@
+{
+  "item": [
+    {
+      "id": "3c498b76-4374-4e0c-9e2e-63eed65e5d8d",
+      "name": "Talks",
+      "description": {
+        "content": "Generate AI talking-head videos (V2 Photo / V3 Pro avatars)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc1e1177-081f-4506-9ffa-317ab2b4d978",
+          "name": "List talks",
+          "request": {
+            "name": "List talks",
+            "description": {
+              "content": "Retrieve a paginated list of talks for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "talks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of talks to return (default 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "653a333a-13d9-436d-aefa-3878a6bb992c",
+              "name": "Paginated list of talks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"talks\": [\n    {\n      \"id\": \"string\",\n      \"user_id\": \"string\",\n      \"source_url\": \"https://NBcncRyodtLueIIiLDuM.taTP6WQitgCdoHnRp1eNdxoVnXoZ3aEWJ0\",\n      \"audio_url\": \"http://WBhujAtTLdrChVklbhbZbVfgLxQSr.aiqrpnZzYfD2+1OX1DtALogzQGQYg27bgY31DnyZEMUcwNmVfhEUVvb4XGMUBH\",\n      \"created_at\": \"2008-03-14T17:58:06.476Z\",\n      \"created_by\": \"string\",\n      \"started_at\": \"1976-03-24T14:30:29.307Z\",\n      \"modified_at\": \"1997-07-29T06:26:37.141Z\",\n      \"status\": \"started\",\n      \"result_url\": \"http://TuRYdXaOmmEGvdagWBbdj.lpxqJTbrXXuwHdxz\",\n      \"config\": {},\n      \"webhook\": \"https://KsDglmKuOdwRenrlkgOihwkNCRiW.tvcG-8\",\n      \"metadata\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"user_id\": \"string\",\n      \"source_url\": \"https://INtWBbDGYPiSdKgurTVtEMjXWxRsJUC.drfZt0zsBsCu,BGnHgxw5QAAZQL3JJ-mBCUecaTYu8nXM-aBRxB.TDyr7\",\n      \"audio_url\": \"http://mKDC.piKbNhstvCZa2E\",\n      \"created_at\": \"1988-04-13T10:28:03.193Z\",\n      \"created_by\": \"string\",\n      \"started_at\": \"2004-07-12T16:39:26.084Z\",\n      \"modified_at\": \"1966-06-19T13:14:50.537Z\",\n      \"status\": \"done\",\n      \"result_url\": \"http://NqZMPCByNoqtATvzrrZKVhXl.dqAzW0pF+TYTRV9yNM-,5ZBHDk8gF78Z40W8gOI34lHNqGNjTHtD5tZEF-Cv12u7ZILF4Sw+WdI-.sZE\",\n      \"config\": {},\n      \"webhook\": \"http://whRgRWKqXqNKvj.uzyfVaBCBVJnjLqImJ2CNLGOWDsUJqP1yOls8ykbJhIQRnzC\",\n      \"metadata\": {}\n    }\n  ],\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a25cbfc9-2a38-4f94-afa0-619b5ddcda82",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "639c2b6a-9838-4d80-8d78-294f9d82dd95",
+          "name": "Create a talk",
+          "request": {
+            "name": "Create a talk",
+            "description": {
+              "content": "Generate an AI talking-head video by combining a source image with a text script or audio file. Processing is asynchronous — poll GET /talks/{id} or provide a webhook URL for completion notification.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "talks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aadc8178-060e-4c72-8c1c-5aebcb83a149",
+              "name": "Talk created and queued for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"talk\",\n  \"created_at\": \"1975-11-12T15:53:23.008Z\",\n  \"created_by\": \"string\",\n  \"status\": \"created\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fe998e2-8e56-4909-b8a5-24c813e4ac88",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3f46918-b33f-4db6-91c4-3604e78a2006",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0fc24c9-a440-4d2a-bfe0-0359d6e05ce3",
+              "name": "Insufficient credits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db0d26d-e592-4c92-96cf-4c40d9efad12",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99022f49-f65c-4a97-9479-52a7948131a5",
+              "name": "Content moderation rejection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": {\n    \"type\": \"<string>\",\n    \"input\": \"<string>\",\n    \"provider\": {\n      \"type\": \"<string>\",\n      \"voice_id\": \"<string>\",\n      \"language\": \"<string>\"\n    }\n  },\n  \"source_url\": \"<uri>\",\n  \"config\": {\n    \"logo\": {\n      \"url\": \"<uri>\",\n      \"position\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    \"result_format\": \"<string>\",\n    \"fluent\": \"<boolean>\",\n    \"pad_audio\": \"<number>\"\n  },\n  \"user_data\": \"<string>\",\n  \"name\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 451,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d85ee70-8c40-4d12-ae0a-09752f90723c",
+          "name": "Get a talk",
+          "request": {
+            "name": "Get a talk",
+            "description": {
+              "content": "Retrieve the status and result of a specific talk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "talks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bad3aed5-7ff8-4845-932a-1583e1d18143",
+              "name": "Talk object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"user_id\": \"string\",\n  \"source_url\": \"http://qlb.plep467zx,kkZKcCKYE9ki2HmUNMehZQ.yBMkhbJmNmaHwPmk5qaOEtxb0rY7n4USd2vU\",\n  \"audio_url\": \"http://NsAW.phnxoaIHOHIEXxAJ86NtFvaIwxaUytJiFmk-wZv40z\",\n  \"created_at\": \"1990-08-28T13:25:36.417Z\",\n  \"created_by\": \"string\",\n  \"started_at\": \"1999-07-22T13:46:53.593Z\",\n  \"modified_at\": \"1972-07-28T15:51:56.768Z\",\n  \"status\": \"created\",\n  \"result_url\": \"https://RbkhTrHCbiDcVnI.wcyicSlB6THipJBp-wpW.xukKrBIKsTKqNl4u07Zq\",\n  \"config\": {},\n  \"webhook\": \"http://INyxobxLw.ihvfR2NfQ49XG6xclndDGwRCqOcdyS4sUDcABhpKvLnR-VZ-JwfkWx\",\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "330ef714-fba3-4320-8042-c30e58921654",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91ea63bc-d82a-493f-8ca2-54b0bdede30a",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"NotFoundError\",\n  \"description\": \"not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ec766dc-8fff-4c7b-b90e-6e04f29cf23a",
+          "name": "Delete a talk",
+          "request": {
+            "name": "Delete a talk",
+            "description": {
+              "content": "Delete a specific talk by ID. Cannot delete a talk that is currently processing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "talks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "213707a0-aab1-4d12-b3cc-190312e5f5a3",
+              "name": "Deleted talk object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"user_id\": \"string\",\n  \"source_url\": \"http://qlb.plep467zx,kkZKcCKYE9ki2HmUNMehZQ.yBMkhbJmNmaHwPmk5qaOEtxb0rY7n4USd2vU\",\n  \"audio_url\": \"http://NsAW.phnxoaIHOHIEXxAJ86NtFvaIwxaUytJiFmk-wZv40z\",\n  \"created_at\": \"1990-08-28T13:25:36.417Z\",\n  \"created_by\": \"string\",\n  \"started_at\": \"1999-07-22T13:46:53.593Z\",\n  \"modified_at\": \"1972-07-28T15:51:56.768Z\",\n  \"status\": \"created\",\n  \"result_url\": \"https://RbkhTrHCbiDcVnI.wcyicSlB6THipJBp-wpW.xukKrBIKsTKqNl4u07Zq\",\n  \"config\": {},\n  \"webhook\": \"http://INyxobxLw.ihvfR2NfQ49XG6xclndDGwRCqOcdyS4sUDcABhpKvLnR-VZ-JwfkWx\",\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9cf61f4-7e1a-47f6-832a-4c07da6f253b",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7267d3e-4717-4885-941a-7abc788dae68",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"NotFoundError\",\n  \"description\": \"not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75665d17-8641-4c9b-a741-9f52dcc1fca1",
+              "name": "Talk is in process, try again later.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "talks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d-id.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a8031c70-a94b-40b4-9cef-112a31eccb0f",
+    "name": "D-ID Agents Talks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+      "type": "text/plain"
+    }
+  }
+}

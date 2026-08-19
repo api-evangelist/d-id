@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "D-ID Agents Videos V4 API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Videos V4",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List V4 videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/videos",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of V4 Expressive avatar videos."
+        },
+        {
+          "info": {
+            "name": "Create a V4 video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d-id.com/videos",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a V4 Expressive full-HD avatar video."
+        },
+        {
+          "info": {
+            "name": "Get a V4 video",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/videos/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve the status and result of a specific V4 video."
+        },
+        {
+          "info": {
+            "name": "Delete a V4 video",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d-id.com/videos/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a V4 video"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

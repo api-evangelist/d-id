@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "D-ID Agents Talks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Talks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List talks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/talks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of talks to return (default 100)."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous response."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of talks for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create a talk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d-id.com/talks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate an AI talking-head video by combining a source image with a text script or audio file. Processing is asynchronous — poll GET /talks/{id} or provide a webhook URL for completion notification.\n"
+        },
+        {
+          "info": {
+            "name": "Get a talk",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/talks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve the status and result of a specific talk."
+        },
+        {
+          "info": {
+            "name": "Delete a talk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d-id.com/talks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a specific talk by ID. Cannot delete a talk that is currently processing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

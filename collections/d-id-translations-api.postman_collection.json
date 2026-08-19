@@ -1,0 +1,895 @@
+{
+  "item": [
+    {
+      "id": "f848603c-26a5-4db6-b2eb-a3d360ad30e8",
+      "name": "Translations",
+      "description": {
+        "content": "Translate existing videos into 100+ languages with lip-sync",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d228bef-7b46-4dc5-8ac3-5667b5bebf48",
+          "name": "List video translations",
+          "request": {
+            "name": "List video translations",
+            "description": {
+              "content": "Retrieve a paginated list of video translation jobs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "translations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39485e42-a83f-48b7-83da-a44cb0cf758c",
+              "name": "Paginated list of translations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"translations\": [\n    {\n      \"id\": \"string\",\n      \"group_id\": \"string\",\n      \"name\": \"string\",\n      \"owner_id\": \"string\",\n      \"status\": \"error\",\n      \"created_at\": \"2016-04-15T10:45:36.948Z\",\n      \"created_by\": \"string\",\n      \"modified_at\": \"1992-02-15T21:54:05.203Z\",\n      \"result_url\": \"https://n.bsnlEkcHF9ULaenWO4nQd0AsaHDbiRBLXat9RK6.SdUzeEJWseMa\",\n      \"subtitles_url\": \"https://GiJZ.qbczesSFoLRQSVVye-nxdesjRgwY1q8Y-8lD-Adm4wsE6gSjsO3jlaMEYD\",\n      \"thumbnail_url\": \"https://UhBPf.gkV5bBEA6lG4YTrXXdFT1s.j9yxDeLjHPOkydriHNk0cB2kjo1oxVAgAlauPJDp8SSROU\",\n      \"transcriptions\": [\n        {\n          \"url\": \"https://TsxXc.xojjP3Rdajqurt,V.viPuCqnegXE6t.MqZtdg2Ibrw\",\n          \"version_type\": \"string\",\n          \"selected\": false\n        },\n        {\n          \"url\": \"http://oWamu.afxQktz8Fo53Rak8DKa+wZiMD3fB6Is51auxGbSGHTovMukaFf-0oPu\",\n          \"version_type\": \"string\",\n          \"selected\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"group_id\": \"string\",\n      \"name\": \"string\",\n      \"owner_id\": \"string\",\n      \"status\": \"done\",\n      \"created_at\": \"1976-04-14T22:30:23.879Z\",\n      \"created_by\": \"string\",\n      \"modified_at\": \"2016-05-29T13:44:20.853Z\",\n      \"result_url\": \"http://uijkoLkBEYdzdzqSgTnDUicfGrmXCrQvs.izD,V6Favuj8CguSZOnmnb6sXtAVNjQN21KQZWn3istFZfOqtOoWrCJq+g\",\n      \"subtitles_url\": \"http://ZejjzHuOtdQTxJR.rorzP3Gkc38WCxfzrKOCZvSGEsExJMR0woSisGpdBa3WBoobC7enl318INOgym1CFnHg\",\n      \"thumbnail_url\": \"http://bfNxJHre.xswN9k4N6sBtxmR4xlHaOkgh0AyxH6xsp\",\n      \"transcriptions\": [\n        {\n          \"url\": \"http://cjSTJYvxIpVVBkmt.zvuqeXLJDcxUQ5vlOxqET38xxmraozQ9yZiqrT1QYu5G+Qr6iIuDcx+O74lR\",\n          \"version_type\": \"string\",\n          \"selected\": false\n        },\n        {\n          \"url\": \"https://WjSdSnZlAGQvNLbTXjHcdNAeORUL.tpuPP9ejldBqI8LfBWOOTAV4ippHR0yId,W\",\n          \"version_type\": \"string\",\n          \"selected\": false\n        }\n      ]\n    }\n  ],\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c26b0228-68c9-48c3-8887-4f22e11109fd",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d43fd52-63c3-4e3c-832f-011c46349d9a",
+          "name": "Create a video translation",
+          "request": {
+            "name": "Create a video translation",
+            "description": {
+              "content": "Translate an existing video into one or more target languages using AI speech translation, voice cloning, and lip-sync technology.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "translations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source_url\": \"<uri>\",\n  \"languages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"source_language\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"user_data\": \"<string>\",\n  \"result_url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f073960f-463c-43cc-8097-4837a6cb848b",
+              "name": "Translation job created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_url\": \"<uri>\",\n  \"languages\": [\n    \"es\",\n    \"fr\"\n  ],\n  \"source_language\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"user_data\": \"<string>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"translations\": [\n    {\n      \"id\": \"string\",\n      \"group_id\": \"string\",\n      \"name\": \"string\",\n      \"owner_id\": \"string\",\n      \"status\": \"error\",\n      \"created_at\": \"1962-11-16T00:51:44.057Z\",\n      \"created_by\": \"string\",\n      \"modified_at\": \"1998-02-02T22:22:32.099Z\",\n      \"result_url\": \"https://xxrZKhMAKRwKV.cjrvuJJM+iGWyEQx-05BMISuAUFmjn-PMgPvRdkfKHXV3q6jFlJQCHaoC9QNT.V\",\n      \"subtitles_url\": \"http://fVitfFQUrnrsYsJQVXAQWaqSAI.ngThS4HypBX.iS.pqg4Vcw+tldPypXGYKSNF9DJwudKP\",\n      \"thumbnail_url\": \"https://zFczv.pzjYpzg1Z6Qp7Fhl6llbPLKMdpWp6Oh0EPcclXnq\",\n      \"transcriptions\": [\n        {\n          \"url\": \"http://C.tkaaB-RJLW9MCFtop6sVtykwlED8R7GugN\",\n          \"version_type\": \"string\",\n          \"selected\": false\n        },\n        {\n          \"url\": \"https://NQUzaPpwUlJguohqNdIny.ewrQzzAreZ0pK2iumGGeHJBMkvsLeN5\",\n          \"version_type\": \"string\",\n          \"selected\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"group_id\": \"string\",\n      \"name\": \"string\",\n      \"owner_id\": \"string\",\n      \"status\": \"error\",\n      \"created_at\": \"1952-05-21T16:51:37.843Z\",\n      \"created_by\": \"string\",\n      \"modified_at\": \"1955-06-15T23:57:43.946Z\",\n      \"result_url\": \"https://LlcyFDn.ehpq94iOp8R+u5E0gEF.7dBtU4,J\",\n      \"subtitles_url\": \"http://DKrVp.hjorg13bQKGRWfZpqwcdQlJunu16kha+ZQqKFvQQHgjnfD\",\n      \"thumbnail_url\": \"http://brcbxKKBPmVpXphyhhOhTGzGt.wbbCWrfOrxuX19PKbmgnbYE\",\n      \"transcriptions\": [\n        {\n          \"url\": \"https://GtWTEHWJUSFiwfhaKeyHBaGlqU.wrjniV9KA7nckL2Voka5ckvI7IE95M5LGV8vZG4\",\n          \"version_type\": \"string\",\n          \"selected\": false\n        },\n        {\n          \"url\": \"http://tqhQYMCzTBjEm.jvfhK3P1FJ2bPsh4cvd.ScJ0+OPFML.DkfckqSorbDJ,KnMDD\",\n          \"version_type\": \"string\",\n          \"selected\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6a9c926-d6c0-4a05-b8e8-e76f46f3540f",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_url\": \"<uri>\",\n  \"languages\": [\n    \"es\",\n    \"fr\"\n  ],\n  \"source_language\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"user_data\": \"<string>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04d7a9d1-a039-4d1e-9dcd-a1fe96289f77",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_url\": \"<uri>\",\n  \"languages\": [\n    \"es\",\n    \"fr\"\n  ],\n  \"source_language\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"user_data\": \"<string>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c4de7b0-bb10-41fc-94ef-7250c066ec62",
+              "name": "Insufficient credits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_url\": \"<uri>\",\n  \"languages\": [\n    \"es\",\n    \"fr\"\n  ],\n  \"source_language\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"user_data\": \"<string>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb2db5d1-8303-44bf-af03-c2251afbd9d7",
+              "name": "Permission denied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_url\": \"<uri>\",\n  \"languages\": [\n    \"es\",\n    \"fr\"\n  ],\n  \"source_language\": \"<string>\",\n  \"webhook\": \"<uri>\",\n  \"user_data\": \"<string>\",\n  \"result_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31ab3cdd-1901-468d-b5c4-9c9dc095453d",
+          "name": "Get a video translation",
+          "request": {
+            "name": "Get a video translation",
+            "description": {
+              "content": "Retrieve the status and result of a specific translation job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "translations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ff4809b-3a22-4e9f-8cec-a526d655cefe",
+              "name": "Translation object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"group_id\": \"string\",\n  \"name\": \"string\",\n  \"owner_id\": \"string\",\n  \"status\": \"ready\",\n  \"created_at\": \"2002-06-07T06:09:11.034Z\",\n  \"created_by\": \"string\",\n  \"modified_at\": \"1964-03-05T12:56:53.953Z\",\n  \"result_url\": \"http://RFVFChjuJVVBNPIMNCmTkvUrtG.rpgXYDO,D3rqxhoyZQBnbvjYUCaml8CMzczn-\",\n  \"subtitles_url\": \"http://XFvowAXfeKTfPZij.uoZKIQh2m\",\n  \"thumbnail_url\": \"https://giorgVgXd.grnQCpqhxTAjVudtCDz.1f,LY\",\n  \"transcriptions\": [\n    {\n      \"url\": \"https://eGdzsljbuYLNVVmDPwHsnSwJq.vzkhH.mhUPg+fLARtKTCHooJdiirIo-edX\",\n      \"version_type\": \"string\",\n      \"selected\": false\n    },\n    {\n      \"url\": \"https://DYdbsqVymVmashkiYzMEsllko.jpadBOJmEZi61Q73aJmoDJH+6WE0j49g5-vzX3jmJlSB\",\n      \"version_type\": \"string\",\n      \"selected\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65478496-9e52-40a7-8b22-00a82e31ce83",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9725bb4f-531a-40b8-99ae-1aeb96a39b82",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"NotFoundError\",\n  \"description\": \"not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1a03565-bece-4c09-b270-96869f573ba0",
+          "name": "Delete a video translation",
+          "request": {
+            "name": "Delete a video translation",
+            "description": {},
+            "url": {
+              "path": [
+                "translations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5338f65e-6ffa-46f9-adf9-8a7e68bc155c",
+              "name": "Deleted translation object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"group_id\": \"string\",\n  \"name\": \"string\",\n  \"owner_id\": \"string\",\n  \"status\": \"ready\",\n  \"created_at\": \"2002-06-07T06:09:11.034Z\",\n  \"created_by\": \"string\",\n  \"modified_at\": \"1964-03-05T12:56:53.953Z\",\n  \"result_url\": \"http://RFVFChjuJVVBNPIMNCmTkvUrtG.rpgXYDO,D3rqxhoyZQBnbvjYUCaml8CMzczn-\",\n  \"subtitles_url\": \"http://XFvowAXfeKTfPZij.uoZKIQh2m\",\n  \"thumbnail_url\": \"https://giorgVgXd.grnQCpqhxTAjVudtCDz.1f,LY\",\n  \"transcriptions\": [\n    {\n      \"url\": \"https://eGdzsljbuYLNVVmDPwHsnSwJq.vzkhH.mhUPg+fLARtKTCHooJdiirIo-edX\",\n      \"version_type\": \"string\",\n      \"selected\": false\n    },\n    {\n      \"url\": \"https://DYdbsqVymVmashkiYzMEsllko.jpadBOJmEZi61Q73aJmoDJH+6WE0j49g5-vzX3jmJlSB\",\n      \"version_type\": \"string\",\n      \"selected\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8393799b-5553-4fc3-acc7-7f7889d6b5c7",
+              "name": "Authentication failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "150774ce-233f-4a39-83b6-8e34437e970b",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"NotFoundError\",\n  \"description\": \"not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d-id.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "de82a1dc-963c-4372-b6db-6adf9bc51f63",
+    "name": "D-ID Agents Translations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+      "type": "text/plain"
+    }
+  }
+}

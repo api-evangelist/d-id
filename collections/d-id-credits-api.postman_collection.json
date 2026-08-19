@@ -1,0 +1,166 @@
+{
+  "item": [
+    {
+      "id": "2a0be3aa-e578-4b4a-8276-d3d5ddd0fb0f",
+      "name": "Credits",
+      "description": {
+        "content": "Retrieve account credit balance",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3b7293e-3d8a-4244-8ffd-bd9a828d6257",
+          "name": "Get credits",
+          "request": {
+            "name": "Get credits",
+            "description": {
+              "content": "Retrieve the authenticated user's credit balance and expiration details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02de74cb-a55a-4890-aea8-c846d78ed7c1",
+              "name": "User credit information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credits\": [\n    {\n      \"owner_id\": \"string\",\n      \"remaining\": 4627.427166202707,\n      \"total\": 7227.456910923154,\n      \"expire_at\": \"2006-06-26T23:58:16.300Z\",\n      \"created_at\": \"1998-01-15T14:57:25.854Z\",\n      \"modified_at\": \"1955-05-04T05:31:29.588Z\",\n      \"valid_from\": \"1991-09-08T23:47:46.495Z\",\n      \"product_id\": \"string\",\n      \"price_id\": \"string\",\n      \"plan_group\": \"string\",\n      \"product_billing_interval\": \"string\"\n    },\n    {\n      \"owner_id\": \"string\",\n      \"remaining\": 1608.6090891053195,\n      \"total\": 3716.419872682143,\n      \"expire_at\": \"2020-10-12T09:02:03.582Z\",\n      \"created_at\": \"2019-11-14T20:17:56.835Z\",\n      \"modified_at\": \"1952-05-29T02:22:19.817Z\",\n      \"valid_from\": \"1988-11-05T17:31:04.101Z\",\n      \"product_id\": \"string\",\n      \"price_id\": \"string\",\n      \"plan_group\": \"string\",\n      \"product_billing_interval\": \"string\"\n    }\n  ],\n  \"remaining\": 6750.097189870949,\n  \"total\": 3622.5602643080133\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "941f81f4-ac50-4604-8c95-e596cd055a7e",
+              "name": "No credits found for user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"AuthorizationError\",\n  \"description\": \"user unauthenticated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d-id.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e107ebc-a3f0-4597-8a95-e592bd104f72",
+    "name": "D-ID Agents Credits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.\n",
+      "type": "text/plain"
+    }
+  }
+}

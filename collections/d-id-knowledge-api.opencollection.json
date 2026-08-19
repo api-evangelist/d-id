@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "D-ID Agents Knowledge API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Knowledge",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List knowledge bases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/knowledge"
+          },
+          "docs": "Retrieve all knowledge bases for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create a knowledge base",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d-id.com/knowledge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new knowledge base for RAG. Each knowledge base can hold up to 5 documents.\n"
+        },
+        {
+          "info": {
+            "name": "Get a knowledge base",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/knowledge/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific knowledge base by ID."
+        },
+        {
+          "info": {
+            "name": "Update a knowledge base",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d-id.com/knowledge/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a knowledge base"
+        },
+        {
+          "info": {
+            "name": "Delete a knowledge base",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d-id.com/knowledge/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique resource identifier."
+              }
+            ]
+          },
+          "docs": "Delete a knowledge base"
+        },
+        {
+          "info": {
+            "name": "List documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/knowledge/:knowledgeId/documents",
+            "params": [
+              {
+                "name": "knowledgeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve all documents in a knowledge base."
+        },
+        {
+          "info": {
+            "name": "Create a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d-id.com/knowledge/:knowledgeId/documents",
+            "params": [
+              {
+                "name": "knowledgeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a document to an existing knowledge base."
+        },
+        {
+          "info": {
+            "name": "Get a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d-id.com/knowledge/:knowledgeId/documents/:documentId",
+            "params": [
+              {
+                "name": "knowledgeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a document"
+        },
+        {
+          "info": {
+            "name": "Delete a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d-id.com/knowledge/:knowledgeId/documents/:documentId",
+            "params": [
+              {
+                "name": "knowledgeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a document"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

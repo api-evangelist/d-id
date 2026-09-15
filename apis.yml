@@ -1,15 +1,14 @@
 aid: d-id
 name: D-ID
-description: >
-  D-ID is an AI-powered platform for generating talking-head videos and interactive digital
-  human experiences from still photos, text scripts, and audio narration. Developers can
-  access REST APIs to produce pre-rendered talking avatar videos, perform real-time
-  streaming agent conversations via WebRTC, translate videos into 100+ languages with voice
-  cloning and lip-sync, and create custom AI agents backed by LLMs and RAG knowledge bases.
-  The platform has generated over 150 million videos and supports parallel processing of
-  tens of thousands of simultaneous API requests. D-ID serves use cases ranging from
-  enterprise training and customer service to personalized marketing campaigns and language
-  learning applications.
+description: 'D-ID is an AI-powered platform for generating talking-head videos and interactive digital
+  human experiences from still photos, text scripts, and audio narration. Developers can access REST APIs
+  to produce pre-rendered talking avatar videos, perform real-time streaming agent conversations via WebRTC,
+  translate videos into 100+ languages with voice cloning and lip-sync, and create custom AI agents backed
+  by LLMs and RAG knowledge bases. The platform has generated over 150 million videos and supports parallel
+  processing of tens of thousands of simultaneous API requests. D-ID serves use cases ranging from enterprise
+  training and customer service to personalized marketing campaigns and language learning applications.
+
+  '
 type: Index
 deliveryModel:
   model: saas
@@ -39,39 +38,39 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/d-id.png
 tags:
-  - AI Video
-  - Digital Humans
-  - Talking Head
-  - Avatar
-  - Generative AI
-  - Video Generation
-  - Real-Time Streaming
-  - Text-to-Video
-  - Video Translation
-  - Voice Cloning
+- AI Video
+- Digital Humans
+- Talking Head
+- Avatar
+- Generative AI
+- Video Generation
+- Real-Time Streaming
+- Text-to-Video
+- Video Translation
+- Voice Cloning
 tags_raw:
-  - AI Video
-  - Digital Humans
-  - Talking Head
-  - Avatar
-  - Generative AI
-  - Video Generation
-  - Real-Time Streaming
-  - Text to Video
-  - Video Translation
-  - Voice Cloning
+- AI Video
+- Digital Humans
+- Talking Head
+- Avatar
+- Generative AI
+- Video Generation
+- Real-Time Streaming
+- Text to Video
+- Video Translation
+- Voice Cloning
 url: https://raw.githubusercontent.com/api-evangelist/d-id/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
 specificationVersion: '0.23'
-
 apis:
-- aid: d-id-translations-api
+- aid: d-id:d-id-translations-api
   name: D-ID Translations API
-  description: >
-    API for translating existing videos into 100+ languages using AI-driven speech translation, voice
-    cloning, and lip-sync technology. Enables brands and content creators to localize video content at
-    scale without re-recording or manual dubbing.
+  description: 'API for translating existing videos into 100+ languages using AI-driven speech translation,
+    voice cloning, and lip-sync technology. Enables brands and content creators to localize video content
+    at scale without re-recording or manual dubbing.
+
+    '
   humanURL: https://docs.d-id.com/reference/translations
   baseURL: https://api.d-id.com
   tags:
@@ -299,47 +298,46 @@ apis:
   - type: Examples
     url: examples/d-id-create-agent-example.json
 common:
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/d-id/overview
-  - type: AgenticAccess
-    url: agentic-access/d-id-agentic-access.yml
-  - type: TrustCenter
-    url: security/d-id-trust-center.yml
-  - type: DomainSecurity
-    url: security/d-id-domain-security.yml
-  - type: Authentication
-    url: authentication/d-id-authentication.yml
-  - type: Website
-    url: https://www.d-id.com
-  - type: Documentation
-    url: https://docs.d-id.com
-  - type: APIReference
-    url: https://docs.d-id.com/reference/get-started
-  - type: GitHubOrganization
-    url: https://github.com/de-id
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/deidentification
-  - type: X
-    url: https://twitter.com/D_ID_
-  - type: Blog
-    url: https://www.d-id.com/blog
-  - type: APICategoryBlog
-    url: https://www.d-id.com/blog/category/api/
-  - type: Pricing
-    url: https://www.d-id.com/pricing/api/
-  - type: StatusPage
-    url: https://status.d-id.com
-  - type: Plans
-    url: plans/d-id-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/d-id-rate-limits.yml
-  - type: FinOps
-    url: finops/d-id-finops.yml
-  - type: Vocabulary
-    url: vocabulary/d-id-vocabulary.yml
-  - type: JSONLDContext
-    url: json-ld/d-id-context.jsonld
-
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/d-id/overview
+- type: AgenticAccess
+  url: agentic-access/d-id-agentic-access.yml
+- type: TrustCenter
+  url: security/d-id-trust-center.yml
+- type: DomainSecurity
+  url: security/d-id-domain-security.yml
+- type: Authentication
+  url: authentication/d-id-authentication.yml
+- type: Website
+  url: https://www.d-id.com
+- type: Documentation
+  url: https://docs.d-id.com
+- type: APIReference
+  url: https://docs.d-id.com/reference/get-started
+- type: GitHubOrganization
+  url: https://github.com/de-id
+- type: LinkedIn
+  url: https://www.linkedin.com/company/deidentification
+- type: X
+  url: https://twitter.com/D_ID_
+- type: Blog
+  url: https://www.d-id.com/blog
+- type: APICategoryBlog
+  url: https://www.d-id.com/blog/category/api/
+- type: Pricing
+  url: https://www.d-id.com/pricing/api/
+- type: StatusPage
+  url: https://status.d-id.com
+- type: Plans
+  url: plans/d-id-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/d-id-rate-limits.yml
+- type: FinOps
+  url: finops/d-id-finops.yml
+- type: Vocabulary
+  url: vocabulary/d-id-vocabulary.yml
+- type: JSONLDContext
+  url: json-ld/d-id-context.jsonld
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

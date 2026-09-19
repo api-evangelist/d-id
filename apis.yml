@@ -41,15 +41,16 @@ tags:
 - AI Video
 - Digital Humans
 - Talking Head
-- Avatar
+- Avatars
 - Generative AI
 - Video Generation
 - Real-Time Streaming
 - Text-to-Video
 - Video Translation
 - Voice Cloning
-- DID
 tags_raw:
+- Avatar
+- DID
 - AI Video
 - Digital Humans
 - Talking Head
@@ -136,6 +137,8 @@ apis:
   humanURL: https://docs.d-id.com/reference/createtalk
   baseURL: https://api.d-id.com
   tags:
+  - Credit
+  tags_raw:
   - Credits
   properties:
   - type: OpenAPI
@@ -232,6 +235,8 @@ apis:
   humanURL: https://docs.d-id.com/reference/createtalk
   baseURL: https://api.d-id.com
   tags:
+  - Translation
+  tags_raw:
   - Translations
   properties:
   - type: OpenAPI
@@ -280,6 +285,8 @@ apis:
   humanURL: https://docs.d-id.com/reference/createtalk
   baseURL: https://api.d-id.com
   tags:
+  - Voice
+  tags_raw:
   - Voices
   properties:
   - type: OpenAPI

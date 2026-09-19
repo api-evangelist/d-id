@@ -38,10 +38,11 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/d-id.png
 tags:
+- Avatars
+- DID
 - AI Video
 - Digital Humans
 - Talking Head
-- Avatars
 - Generative AI
 - Video Generation
 - Real-Time Streaming

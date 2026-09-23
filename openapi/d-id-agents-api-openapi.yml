@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: D-ID Agents API
-  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
-
-    '
+  description: API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
   version: 1.0.0
   contact:
     url: https://www.d-id.com
@@ -39,9 +37,7 @@ paths:
     post:
       operationId: createagent
       summary: Create an agent
-      description: 'Create a new interactive AI agent combining a digital avatar presenter, an LLM backend, and an optional knowledge base.
-
-        '
+      description: Create a new interactive AI agent combining a digital avatar presenter, an LLM backend, and an optional knowledge base.
       tags:
       - Agents
       parameters:
@@ -128,49 +124,15 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   schemas:
-    PresenterConfig:
-      type: object
-      description: 'Avatar presenter configuration. Supports Talk (V2 photo avatar), Clip (V3 personal avatar), or Expressive (V4) presenter types.
-
-        '
-      properties:
-        type:
-          type: string
-          enum:
-          - talk
-          - clip
-          - expressive
-        source_url:
-          type: string
-          format: uri
-          description: Image URL for talk-type presenters.
-        presenter_id:
-          type: string
-          description: Presenter ID for clip or expressive types.
-        voice:
-          type: object
-          properties:
-            type:
-              type: string
-            voice_id:
-              type: string
     AgentResponseDto:
       type: object
       properties:
@@ -212,37 +174,6 @@ components:
           description: Plan information.
         embed:
           type: boolean
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: AuthorizationError
-        description:
-          type: string
-          example: user unauthenticated
-    LLMConfig:
-      type: object
-      description: Language model configuration.
-      properties:
-        provider:
-          type: string
-          enum:
-          - openai
-          - google
-          - d-id
-          - custom
-          - external
-          description: LLM provider.
-        model:
-          type: string
-          description: Model identifier.
-        instructions:
-          type: string
-          description: System prompt / persona instructions.
-        template:
-          type: string
-          description: Response formatting template.
     AgentCreateDto:
       type: object
       required:
@@ -285,14 +216,79 @@ components:
         triggers:
           type: object
           description: Event-based configurations (webhooks, tools).
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
+    PresenterConfig:
+      type: object
+      description: 'Avatar presenter configuration. Supports Talk (V2 photo avatar), Clip (V3 personal avatar), or Expressive (V4) presenter types.
+
+        '
+      properties:
+        type:
+          type: string
+          enum:
+          - talk
+          - clip
+          - expressive
+        source_url:
+          type: string
+          format: uri
+          description: Image URL for talk-type presenters.
+        presenter_id:
+          type: string
+          description: Presenter ID for clip or expressive types.
+        voice:
+          type: object
+          properties:
+            type:
+              type: string
+            voice_id:
+              type: string
+    LLMConfig:
+      type: object
+      description: Language model configuration.
+      properties:
+        provider:
+          type: string
+          enum:
+          - openai
+          - google
+          - d-id
+          - custom
+          - external
+          description: LLM provider.
+        model:
+          type: string
+          description: Model identifier.
+        instructions:
+          type: string
+          description: System prompt / persona instructions.
+        template:
+          type: string
+          description: Response formatting template.
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: AuthorizationError
+        description:
+          type: string
+          example: user unauthenticated
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
   securitySchemes:
     basicAuth:
       type: http

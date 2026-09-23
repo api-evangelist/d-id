@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: D-ID Agents Sessions API
-  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
-
-    '
+  description: API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
   version: 1.0.0
   contact:
     url: https://www.d-id.com
@@ -22,9 +20,7 @@ paths:
     post:
       operationId: createsession
       summary: Create a session
-      description: 'Establish a new streaming session for an Expressive Agent, returning session credentials required to connect via WebRTC or LiveKit.
-
-        '
+      description: Establish a new streaming session for an Expressive Agent, returning session credentials required to connect via WebRTC or LiveKit.
       tags:
       - Sessions
       security:
@@ -115,29 +111,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
-    BadRequest:
-      description: Bad request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
   schemas:
+    InitSessionV2Request:
+      type: object
+      properties:
+        chat_persist:
+          type: boolean
+          description: Whether to persist the chat history across sessions.
+          default: false
     SessionResponse:
       type: object
       properties:
@@ -154,13 +135,6 @@ components:
         interrupt_enabled:
           type: boolean
           description: Whether interrupt (barge-in) is enabled.
-    InitSessionV2Request:
-      type: object
-      properties:
-        chat_persist:
-          type: boolean
-          description: Whether to persist the chat history across sessions.
-          default: false
     JsonError:
       type: object
       properties:
@@ -170,6 +144,28 @@ components:
         description:
           type: string
           example: user unauthenticated
+  responses:
+    BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
   securitySchemes:
     basicAuth:
       type: http

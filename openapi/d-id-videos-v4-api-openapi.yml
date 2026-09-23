@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: D-ID Agents Videos V4 API
-  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
-
-    '
+  title: D-ID Videos Videos V4 API
+  description: REST API for generating AI talking-head videos from a source image combined with a text script or audio file. Supports multiple avatar versions including V4 Expressive (full-HD with dynamic expressions), V3 Pro, V3 Instant (personal avatars from short clips), and V2 Photo avatars. Returns asynchronous job results via polling or webhook.
   version: 1.0.0
   contact:
     url: https://www.d-id.com
@@ -115,53 +113,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    PaymentRequired:
-      description: Insufficient credits.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: NotFoundError
-            description: not found
   schemas:
-    Script:
-      oneOf:
-      - $ref: '#/components/schemas/TextScript'
-      - $ref: '#/components/schemas/AudioScript'
-      discriminator:
-        propertyName: type
-    TalkStatus:
-      type: string
-      enum:
-      - created
-      - started
-      - done
-      - error
-      - rejected
-      description: Processing status of a talk or video job.
     CreateV4VideoDto:
       type: object
       required:
@@ -184,17 +136,20 @@ components:
         user_data:
           type: string
           maxLength: 1000
-    JsonError:
+    AudioScript:
       type: object
+      required:
+      - type
+      - audio_url
       properties:
-        kind:
+        type:
           type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
+          enum:
+          - audio
+        audio_url:
           type: string
-          description: Human-readable error description.
-          example: user unauthenticated
+          format: uri
+          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
     TextScript:
       type: object
       required:
@@ -228,6 +183,12 @@ components:
             language:
               type: string
               description: Language code for TTS synthesis.
+    Script:
+      oneOf:
+      - $ref: '#/components/schemas/TextScript'
+      - $ref: '#/components/schemas/AudioScript'
+      discriminator:
+        propertyName: type
     V4VideoDto:
       type: object
       properties:
@@ -248,20 +209,26 @@ components:
           type: string
         user_data:
           type: string
-    AudioScript:
+    JsonError:
       type: object
-      required:
-      - type
-      - audio_url
       properties:
-        type:
+        kind:
           type: string
-          enum:
-          - audio
-        audio_url:
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
           type: string
-          format: uri
-          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
+          description: Human-readable error description.
+          example: user unauthenticated
+    TalkStatus:
+      type: string
+      enum:
+      - created
+      - started
+      - done
+      - error
+      - rejected
+      description: Processing status of a talk or video job.
   parameters:
     resourceId:
       name: id
@@ -270,6 +237,37 @@ components:
       description: Unique resource identifier.
       schema:
         type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+    PaymentRequired:
+      description: Insufficient credits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   securitySchemes:
     basicAuth:
       type: http
@@ -279,11 +277,6 @@ components:
       type: http
       scheme: bearer
       description: Bearer token authentication.
-    clientKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Scoped client key for SDK embedding.
 externalDocs:
-  description: D-ID Agents API Reference
-  url: https://docs.d-id.com/reference/agents
+  description: D-ID API Reference
+  url: https://docs.d-id.com/reference/get-started

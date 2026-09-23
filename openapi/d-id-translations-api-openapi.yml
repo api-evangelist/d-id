@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: D-ID Agents Translations API
-  description: 'API for creating and managing interactive real-time AI agents that combine digital avatar streaming with large language models, RAG-based knowledge bases, and custom tools. Supports WebRTC and LiveKit-powered streaming sessions, conversation memory, chat export, and integration with third-party LLM providers. Enables face-to-face AI conversations at scale.
-
-    '
+  title: D-ID Videos Translations API
+  description: REST API for generating AI talking-head videos from a source image combined with a text script or audio file. Supports multiple avatar versions including V4 Expressive (full-HD with dynamic expressions), V3 Pro, V3 Instant (personal avatars from short clips), and V2 Photo avatars. Returns asynchronous job results via polling or webhook.
   version: 1.0.0
   contact:
     url: https://www.d-id.com
@@ -54,9 +52,7 @@ paths:
     post:
       operationId: createvideotranslate
       summary: Create a video translation
-      description: 'Translate an existing video into one or more target languages using AI speech translation, voice cloning, and lip-sync technology.
-
-        '
+      description: Translate an existing video into one or more target languages using AI speech translation, voice cloning, and lip-sync technology.
       tags:
       - Translations
       requestBody:
@@ -124,44 +120,17 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    PaymentRequired:
-      description: Insufficient credits.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: NotFoundError
-            description: not found
-    Forbidden:
-      description: Permission denied.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
   schemas:
+    TranscriptionVersion:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        version_type:
+          type: string
+        selected:
+          type: boolean
     GetTranslationResponse:
       type: object
       properties:
@@ -203,17 +172,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptionVersion'
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
-          type: string
-          description: Human-readable error description.
-          example: user unauthenticated
     CreateTranslationDto:
       type: object
       required:
@@ -250,16 +208,54 @@ components:
           type: string
           format: uri
           description: Destination for the output video.
-    TranscriptionVersion:
+    JsonError:
       type: object
       properties:
-        url:
+        kind:
           type: string
-          format: uri
-        version_type:
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
           type: string
-        selected:
-          type: boolean
+          description: Human-readable error description.
+          example: user unauthenticated
+  responses:
+    Forbidden:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+    PaymentRequired:
+      description: Insufficient credits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   parameters:
     resourceId:
       name: id
@@ -277,11 +273,6 @@ components:
       type: http
       scheme: bearer
       description: Bearer token authentication.
-    clientKeyAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Scoped client key for SDK embedding.
 externalDocs:
-  description: D-ID Agents API Reference
-  url: https://docs.d-id.com/reference/agents
+  description: D-ID API Reference
+  url: https://docs.d-id.com/reference/get-started

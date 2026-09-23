@@ -1,22 +1,15 @@
 {
   "provider": "d-id",
   "sources": [
-    "d-id-agents-api-openapi.yml",
-    "d-id-chat-api-openapi.yml",
-    "d-id-credits-api-openapi.yml",
-    "d-id-knowledge-api-openapi.yml",
-    "d-id-sessions-api-openapi.yml",
-    "d-id-talks-api-openapi.yml",
-    "d-id-translations-api-openapi.yml",
-    "d-id-videos-v4-api-openapi.yml",
-    "d-id-voices-api-openapi.yml"
+    "_original/d-id-agents-openapi.yml",
+    "_original/d-id-videos-openapi.yml"
   ],
   "outputs": [
     "d-id-agents-api-openapi.yml",
     "d-id-chat-api-openapi.yml",
-    "d-id-credits-api-openapi.yml",
     "d-id-knowledge-api-openapi.yml",
     "d-id-sessions-api-openapi.yml",
+    "d-id-credits-api-openapi.yml",
     "d-id-talks-api-openapi.yml",
     "d-id-translations-api-openapi.yml",
     "d-id-videos-v4-api-openapi.yml",
@@ -25,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "d-id-agents-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "d-id-videos-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "d-id-agents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-credits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-knowledge-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-talks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-translations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-videos-v4-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "d-id-voices-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

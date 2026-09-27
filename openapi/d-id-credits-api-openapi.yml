@@ -38,17 +38,6 @@ paths:
                 $ref: '#/components/schemas/JsonError'
 components:
   schemas:
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
-          type: string
-          description: Human-readable error description.
-          example: user unauthenticated
     CreditItem:
       type: object
       properties:
@@ -80,6 +69,17 @@ components:
           type: string
         product_billing_interval:
           type: string
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
     UserCredits:
       type: object
       properties:

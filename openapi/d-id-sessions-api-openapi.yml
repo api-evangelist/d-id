@@ -112,13 +112,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    InitSessionV2Request:
-      type: object
-      properties:
-        chat_persist:
-          type: boolean
-          description: Whether to persist the chat history across sessions.
-          default: false
     SessionResponse:
       type: object
       properties:
@@ -135,6 +128,13 @@ components:
         interrupt_enabled:
           type: boolean
           description: Whether interrupt (barge-in) is enabled.
+    InitSessionV2Request:
+      type: object
+      properties:
+        chat_persist:
+          type: boolean
+          description: Whether to persist the chat history across sessions.
+          default: false
     JsonError:
       type: object
       properties:
@@ -151,12 +151,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/JsonError'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
     Unauthorized:
       description: Authentication failure.
       content:
@@ -166,6 +160,12 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   securitySchemes:
     basicAuth:
       type: http

@@ -111,6 +111,15 @@ components:
           - Maintenance
           - Playground
           description: Chat operating mode (Playground deprecated).
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: AuthorizationError
+        description:
+          type: string
+          example: user unauthenticated
     ChatMessageResponse:
       type: object
       properties:
@@ -131,15 +140,6 @@ components:
         videoId:
           type: string
           description: ID of the generated avatar video response.
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: AuthorizationError
-        description:
-          type: string
-          example: user unauthenticated
   responses:
     Unauthorized:
       description: Authentication failure.

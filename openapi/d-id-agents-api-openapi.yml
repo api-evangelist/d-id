@@ -124,56 +124,29 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
   schemas:
-    AgentResponseDto:
+    LLMConfig:
       type: object
+      description: Language model configuration.
       properties:
-        id:
-          type: string
-          description: Agent identifier.
-        preview_description:
-          type: string
-        presenter:
-          $ref: '#/components/schemas/PresenterConfig'
-        llm:
-          $ref: '#/components/schemas/LLMConfig'
-        knowledge:
-          type: object
-          properties:
-            id:
-              type: string
-        starter_message:
-          type: array
-          items:
-            type: string
-        greetings:
-          type: array
-          items:
-            type: string
         provider:
           type: string
-          example: d-id-agents
-        error:
-          type: object
-          description: Error details if applicable.
-        triggers:
-          type: object
-        client_key:
+          enum:
+          - openai
+          - google
+          - d-id
+          - custom
+          - external
+          description: LLM provider.
+        model:
           type: string
-          description: Auto-generated scoped client key.
-        metadata:
-          type: object
-          description: Plan information.
-        embed:
-          type: boolean
+          description: Model identifier.
+        instructions:
+          type: string
+          description: System prompt / persona instructions.
+        template:
+          type: string
+          description: Response formatting template.
     AgentCreateDto:
       type: object
       required:
@@ -216,6 +189,15 @@ components:
         triggers:
           type: object
           description: Event-based configurations (webhooks, tools).
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          example: AuthorizationError
+        description:
+          type: string
+          example: user unauthenticated
     PresenterConfig:
       type: object
       description: 'Avatar presenter configuration. Supports Talk (V2 photo avatar), Clip (V3 personal avatar), or Expressive (V4) presenter types.
@@ -242,44 +224,56 @@ components:
               type: string
             voice_id:
               type: string
-    LLMConfig:
+    AgentResponseDto:
       type: object
-      description: Language model configuration.
       properties:
+        id:
+          type: string
+          description: Agent identifier.
+        preview_description:
+          type: string
+        presenter:
+          $ref: '#/components/schemas/PresenterConfig'
+        llm:
+          $ref: '#/components/schemas/LLMConfig'
+        knowledge:
+          type: object
+          properties:
+            id:
+              type: string
+        starter_message:
+          type: array
+          items:
+            type: string
+        greetings:
+          type: array
+          items:
+            type: string
         provider:
           type: string
-          enum:
-          - openai
-          - google
-          - d-id
-          - custom
-          - external
-          description: LLM provider.
-        model:
+          example: d-id-agents
+        error:
+          type: object
+          description: Error details if applicable.
+        triggers:
+          type: object
+        client_key:
           type: string
-          description: Model identifier.
-        instructions:
-          type: string
-          description: System prompt / persona instructions.
-        template:
-          type: string
-          description: Response formatting template.
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: AuthorizationError
-        description:
-          type: string
-          example: user unauthenticated
+          description: Auto-generated scoped client key.
+        metadata:
+          type: object
+          description: Plan information.
+        embed:
+          type: boolean
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
     Unauthorized:
       description: Authentication failure.
       content:
@@ -289,6 +283,12 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   securitySchemes:
     basicAuth:
       type: http

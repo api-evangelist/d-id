@@ -284,12 +284,6 @@ components:
       schema:
         type: string
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
     Unauthorized:
       description: Authentication failure.
       content:
@@ -299,6 +293,12 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   securitySchemes:
     basicAuth:
       type: http

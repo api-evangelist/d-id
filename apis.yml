@@ -37,6 +37,9 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/d-id.png
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-25
 tags:
 - Avatars
 - DID
@@ -67,23 +70,6 @@ created: '2026-06-12'
 modified: '2026-06-12'
 specificationVersion: '0.23'
 apis:
-- aid: d-id:d-id-translations-api
-  name: D-ID Translations API
-  description: 'API for translating existing videos into 100+ languages using AI-driven speech translation,
-    voice cloning, and lip-sync technology. Enables brands and content creators to localize video content
-    at scale without re-recording or manual dubbing.
-
-    '
-  humanURL: https://docs.d-id.com/reference/translations
-  baseURL: https://api.d-id.com
-  tags:
-  - Video Translation
-  - Voice Cloning
-  - Lip Sync
-  - Localization
-  properties:
-  - type: Documentation
-    url: https://docs.d-id.com/reference/translations
 - aid: d-id:d-id-agents-api
   name: D-ID Agents API
   description: Create and manage AI agent definitions
@@ -232,13 +218,25 @@ apis:
     url: examples/d-id-create-agent-example.json
 - aid: d-id:d-id-translations-api
   name: D-ID Translations API
-  description: Translate existing videos into 100+ languages with lip-sync
-  humanURL: https://docs.d-id.com/reference/createtalk
+  description: 'API for translating existing videos into 100+ languages using AI-driven speech translation,
+    voice cloning, and lip-sync technology. Enables brands and content creators to localize video content
+    at scale without re-recording or manual dubbing.
+
+    '
+  humanURL: https://docs.d-id.com/reference/translations
   baseURL: https://api.d-id.com
   tags:
   - Translation
+  - Video Translation
+  - Voice Cloning
+  - Lip Sync
+  - Localization
   tags_raw:
   - Translations
+  - Video Translation
+  - Voice Cloning
+  - Lip Sync
+  - Localization
   properties:
   - type: OpenAPI
     url: openapi/d-id-translations-api-openapi.yml
@@ -256,6 +254,8 @@ apis:
     url: json-schema/d-id-agent-schema.json
   - type: Examples
     url: examples/d-id-create-agent-example.json
+  - type: Documentation
+    url: https://docs.d-id.com/reference/translations
 - aid: d-id:d-id-videos-v4-api
   name: D-ID Videos V4 API
   description: Generate V4 Expressive full-HD avatar videos

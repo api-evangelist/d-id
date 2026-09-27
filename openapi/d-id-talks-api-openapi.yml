@@ -119,64 +119,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/JsonError'
 components:
-  responses:
-    Forbidden:
-      description: Permission denied.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    ContentModeration:
-      description: Content moderation rejection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: NotFoundError
-            description: not found
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
-    PaymentRequired:
-      description: Insufficient credits.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
   schemas:
-    AudioScript:
-      type: object
-      required:
-      - type
-      - audio_url
-      properties:
-        type:
-          type: string
-          enum:
-          - audio
-        audio_url:
-          type: string
-          format: uri
-          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
+    TalkStatus:
+      type: string
+      enum:
+      - created
+      - started
+      - done
+      - error
+      - rejected
+      description: Processing status of a talk or video job.
     TalkResponse:
       type: object
       properties:
@@ -192,6 +144,17 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/TalkStatus'
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
     CreateTalkDto:
       type: object
       required:
@@ -242,6 +205,36 @@ components:
           type: string
           format: uri
           description: Custom destination URL for the output video.
+    GetTalksDto:
+      type: object
+      properties:
+        talks:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTalkDto'
+        token:
+          type: string
+          description: Pagination token for the next page.
+    AudioScript:
+      type: object
+      required:
+      - type
+      - audio_url
+      properties:
+        type:
+          type: string
+          enum:
+          - audio
+        audio_url:
+          type: string
+          format: uri
+          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
+    Script:
+      oneOf:
+      - $ref: '#/components/schemas/TextScript'
+      - $ref: '#/components/schemas/AudioScript'
+      discriminator:
+        propertyName: type
     TextScript:
       type: object
       required:
@@ -275,12 +268,6 @@ components:
             language:
               type: string
               description: Language code for TTS synthesis.
-    Script:
-      oneOf:
-      - $ref: '#/components/schemas/TextScript'
-      - $ref: '#/components/schemas/AudioScript'
-      discriminator:
-        propertyName: type
     GetTalkDto:
       type: object
       properties:
@@ -324,36 +311,6 @@ components:
         metadata:
           type: object
           description: Collected process data.
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
-          type: string
-          description: Human-readable error description.
-          example: user unauthenticated
-    TalkStatus:
-      type: string
-      enum:
-      - created
-      - started
-      - done
-      - error
-      - rejected
-      description: Processing status of a talk or video job.
-    GetTalksDto:
-      type: object
-      properties:
-        talks:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetTalkDto'
-        token:
-          type: string
-          description: Pagination token for the next page.
   parameters:
     resourceId:
       name: id
@@ -362,6 +319,49 @@ components:
       description: Unique resource identifier.
       schema:
         type: string
+  responses:
+    PaymentRequired:
+      description: Insufficient credits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    Forbidden:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    ContentModeration:
+      description: Content moderation rejection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   securitySchemes:
     basicAuth:
       type: http

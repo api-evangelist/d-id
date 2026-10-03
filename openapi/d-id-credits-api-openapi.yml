@@ -69,17 +69,6 @@ components:
           type: string
         product_billing_interval:
           type: string
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
-          type: string
-          description: Human-readable error description.
-          example: user unauthenticated
     UserCredits:
       type: object
       properties:
@@ -93,6 +82,17 @@ components:
         total:
           type: number
           description: Aggregate total credits across all credit items.
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
   securitySchemes:
     basicAuth:
       type: http

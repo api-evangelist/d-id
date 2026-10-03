@@ -119,16 +119,99 @@ paths:
               schema:
                 $ref: '#/components/schemas/JsonError'
 components:
+  responses:
+    ContentModeration:
+      description: Content moderation rejection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Forbidden:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    PaymentRequired:
+      description: Insufficient credits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
   schemas:
-    TalkStatus:
-      type: string
-      enum:
-      - created
-      - started
-      - done
-      - error
-      - rejected
-      description: Processing status of a talk or video job.
+    Script:
+      oneOf:
+      - $ref: '#/components/schemas/TextScript'
+      - $ref: '#/components/schemas/AudioScript'
+      discriminator:
+        propertyName: type
+    TextScript:
+      type: object
+      required:
+      - type
+      - input
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+        input:
+          type: string
+          description: Text content to synthesize (3–40,000 characters).
+          minLength: 3
+          maxLength: 40000
+        provider:
+          type: object
+          description: TTS provider configuration.
+          properties:
+            type:
+              type: string
+              enum:
+              - microsoft
+              - elevenlabs
+              - amazon
+              - google
+              - azure-openai
+            voice_id:
+              type: string
+              description: Voice identifier for the selected provider.
+            language:
+              type: string
+              description: Language code for TTS synthesis.
+    GetTalksDto:
+      type: object
+      properties:
+        talks:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTalkDto'
+        token:
+          type: string
+          description: Pagination token for the next page.
     TalkResponse:
       type: object
       properties:
@@ -144,17 +227,49 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/TalkStatus'
-    JsonError:
+    GetTalkDto:
       type: object
       properties:
-        kind:
+        id:
           type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
+          description: Unique talk identifier.
+        user_id:
           type: string
-          description: Human-readable error description.
-          example: user unauthenticated
+          description: User who submitted the talk.
+        source_url:
+          type: string
+          format: uri
+          description: Source image URL (.jpg or .png).
+        audio_url:
+          type: string
+          format: uri
+          description: Audio file URL used for the actor.
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        modified_at:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/TalkStatus'
+        result_url:
+          type: string
+          format: uri
+          description: S3 URI to the resulting video.
+        config:
+          type: object
+          description: Configuration used for processing.
+        webhook:
+          type: string
+          format: uri
+        metadata:
+          type: object
+          description: Collected process data.
     CreateTalkDto:
       type: object
       required:
@@ -205,16 +320,15 @@ components:
           type: string
           format: uri
           description: Custom destination URL for the output video.
-    GetTalksDto:
-      type: object
-      properties:
-        talks:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetTalkDto'
-        token:
-          type: string
-          description: Pagination token for the next page.
+    TalkStatus:
+      type: string
+      enum:
+      - created
+      - started
+      - done
+      - error
+      - rejected
+      description: Processing status of a talk or video job.
     AudioScript:
       type: object
       required:
@@ -229,88 +343,17 @@ components:
           type: string
           format: uri
           description: URL of the audio file (max 15 MB, 5–10 minutes duration).
-    Script:
-      oneOf:
-      - $ref: '#/components/schemas/TextScript'
-      - $ref: '#/components/schemas/AudioScript'
-      discriminator:
-        propertyName: type
-    TextScript:
-      type: object
-      required:
-      - type
-      - input
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-        input:
-          type: string
-          description: Text content to synthesize (3–40,000 characters).
-          minLength: 3
-          maxLength: 40000
-        provider:
-          type: object
-          description: TTS provider configuration.
-          properties:
-            type:
-              type: string
-              enum:
-              - microsoft
-              - elevenlabs
-              - amazon
-              - google
-              - azure-openai
-            voice_id:
-              type: string
-              description: Voice identifier for the selected provider.
-            language:
-              type: string
-              description: Language code for TTS synthesis.
-    GetTalkDto:
+    JsonError:
       type: object
       properties:
-        id:
+        kind:
           type: string
-          description: Unique talk identifier.
-        user_id:
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
           type: string
-          description: User who submitted the talk.
-        source_url:
-          type: string
-          format: uri
-          description: Source image URL (.jpg or .png).
-        audio_url:
-          type: string
-          format: uri
-          description: Audio file URL used for the actor.
-        created_at:
-          type: string
-          format: date-time
-        created_by:
-          type: string
-        started_at:
-          type: string
-          format: date-time
-        modified_at:
-          type: string
-          format: date-time
-        status:
-          $ref: '#/components/schemas/TalkStatus'
-        result_url:
-          type: string
-          format: uri
-          description: S3 URI to the resulting video.
-        config:
-          type: object
-          description: Configuration used for processing.
-        webhook:
-          type: string
-          format: uri
-        metadata:
-          type: object
-          description: Collected process data.
+          description: Human-readable error description.
+          example: user unauthenticated
   parameters:
     resourceId:
       name: id
@@ -319,49 +362,6 @@ components:
       description: Unique resource identifier.
       schema:
         type: string
-  responses:
-    PaymentRequired:
-      description: Insufficient credits.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: NotFoundError
-            description: not found
-    Forbidden:
-      description: Permission denied.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    ContentModeration:
-      description: Content moderation rejection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
   securitySchemes:
     basicAuth:
       type: http

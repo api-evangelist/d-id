@@ -53,15 +53,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    VoiceLanguage:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Language code (e.g., en-US).
-        name:
-          type: string
-          description: Human-readable language name.
     IVoice:
       type: object
       required:
@@ -125,6 +116,15 @@ components:
           - CloneVoice
         isLegacy:
           type: boolean
+    VoiceLanguage:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Language code (e.g., en-US).
+        name:
+          type: string
+          description: Human-readable language name.
     JsonError:
       type: object
       properties:

@@ -57,6 +57,50 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ChatMessageRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+          description: Conversation messages. Must contain at least one message.
+        streamId:
+          type: string
+          description: Optional stream ID to link video response.
+        sessionId:
+          type: string
+          description: Optional session ID for WebRTC stream.
+        chatMode:
+          type: string
+          enum:
+          - Functional
+          - TextOnly
+          - Maintenance
+          - Playground
+          description: Chat operating mode (Playground deprecated).
+    ChatMessageResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeMatch'
+          description: Relevant knowledge base matches.
+        documentIds:
+          type: array
+          items:
+            type: string
+        result:
+          type: string
+          description: Text response from the agent.
+        chatMode:
+          type: string
+        videoId:
+          type: string
+          description: ID of the generated avatar video response.
     ChatMessage:
       type: object
       properties:
@@ -87,30 +131,6 @@ components:
         source_url:
           type: string
           format: uri
-    ChatMessageRequest:
-      type: object
-      required:
-      - messages
-      properties:
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatMessage'
-          description: Conversation messages. Must contain at least one message.
-        streamId:
-          type: string
-          description: Optional stream ID to link video response.
-        sessionId:
-          type: string
-          description: Optional session ID for WebRTC stream.
-        chatMode:
-          type: string
-          enum:
-          - Functional
-          - TextOnly
-          - Maintenance
-          - Playground
-          description: Chat operating mode (Playground deprecated).
     JsonError:
       type: object
       properties:
@@ -120,26 +140,6 @@ components:
         description:
           type: string
           example: user unauthenticated
-    ChatMessageResponse:
-      type: object
-      properties:
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/KnowledgeMatch'
-          description: Relevant knowledge base matches.
-        documentIds:
-          type: array
-          items:
-            type: string
-        result:
-          type: string
-          description: Text response from the agent.
-        chatMode:
-          type: string
-        videoId:
-          type: string
-          description: ID of the generated avatar video response.
   responses:
     Unauthorized:
       description: Authentication failure.

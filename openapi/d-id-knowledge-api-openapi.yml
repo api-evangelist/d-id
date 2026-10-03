@@ -275,15 +275,13 @@ components:
         description:
           type: string
           example: user unauthenticated
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
   responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
     Unauthorized:
       description: Authentication failure.
       content:
@@ -293,12 +291,14 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

@@ -114,88 +114,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    TalkStatus:
-      type: string
-      enum:
-      - created
-      - started
-      - done
-      - error
-      - rejected
-      description: Processing status of a talk or video job.
-    Script:
-      oneOf:
-      - $ref: '#/components/schemas/TextScript'
-      - $ref: '#/components/schemas/AudioScript'
-      discriminator:
-        propertyName: type
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
-          type: string
-          description: Human-readable error description.
-          example: user unauthenticated
-    CreateV4VideoDto:
-      type: object
-      required:
-      - script
-      properties:
-        script:
-          $ref: '#/components/schemas/Script'
-        presenter_id:
-          type: string
-          description: V4 avatar presenter identifier.
-        config:
-          type: object
-          description: V4-specific configuration.
-        webhook:
-          type: string
-          format: uri
-        result_url:
-          type: string
-          format: uri
-        user_data:
-          type: string
-          maxLength: 1000
-    AudioScript:
-      type: object
-      required:
-      - type
-      - audio_url
-      properties:
-        type:
-          type: string
-          enum:
-          - audio
-        audio_url:
-          type: string
-          format: uri
-          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
-    V4VideoDto:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          $ref: '#/components/schemas/TalkStatus'
-        result_url:
-          type: string
-          format: uri
-        created_at:
-          type: string
-          format: date-time
-        modified_at:
-          type: string
-          format: date-time
-        created_by:
-          type: string
-        user_data:
-          type: string
     TextScript:
       type: object
       required:
@@ -229,15 +147,104 @@ components:
             language:
               type: string
               description: Language code for TTS synthesis.
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
+    V4VideoDto:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/TalkStatus'
+        result_url:
+          type: string
+          format: uri
+        created_at:
+          type: string
+          format: date-time
+        modified_at:
+          type: string
+          format: date-time
+        created_by:
+          type: string
+        user_data:
+          type: string
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
+    TalkStatus:
+      type: string
+      enum:
+      - created
+      - started
+      - done
+      - error
+      - rejected
+      description: Processing status of a talk or video job.
+    AudioScript:
+      type: object
+      required:
+      - type
+      - audio_url
+      properties:
+        type:
+          type: string
+          enum:
+          - audio
+        audio_url:
+          type: string
+          format: uri
+          description: URL of the audio file (max 15 MB, 5–10 minutes duration).
+    CreateV4VideoDto:
+      type: object
+      required:
+      - script
+      properties:
+        script:
+          $ref: '#/components/schemas/Script'
+        presenter_id:
+          type: string
+          description: V4 avatar presenter identifier.
+        config:
+          type: object
+          description: V4-specific configuration.
+        webhook:
+          type: string
+          format: uri
+        result_url:
+          type: string
+          format: uri
+        user_data:
+          type: string
+          maxLength: 1000
+    Script:
+      oneOf:
+      - $ref: '#/components/schemas/TextScript'
+      - $ref: '#/components/schemas/AudioScript'
+      discriminator:
+        propertyName: type
   responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
     PaymentRequired:
       description: Insufficient credits.
       content:
@@ -253,21 +260,14 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: NotFoundError
-            description: not found
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

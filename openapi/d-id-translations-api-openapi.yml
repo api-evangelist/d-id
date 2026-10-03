@@ -121,6 +121,47 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    GetTranslationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        group_id:
+          type: string
+        name:
+          type: string
+        owner_id:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - validating
+          - done
+          - error
+          - rejected
+          - ready
+        created_at:
+          type: string
+          format: date-time
+        created_by:
+          type: string
+        modified_at:
+          type: string
+          format: date-time
+        result_url:
+          type: string
+          format: uri
+        subtitles_url:
+          type: string
+          format: uri
+        thumbnail_url:
+          type: string
+          format: uri
+        transcriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptionVersion'
     CreateTranslationDto:
       type: object
       required:
@@ -178,56 +219,28 @@ components:
           type: string
           description: Human-readable error description.
           example: user unauthenticated
-    GetTranslationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        group_id:
-          type: string
-        name:
-          type: string
-        owner_id:
-          type: string
-        status:
-          type: string
-          enum:
-          - created
-          - validating
-          - done
-          - error
-          - rejected
-          - ready
-        created_at:
-          type: string
-          format: date-time
-        created_by:
-          type: string
-        modified_at:
-          type: string
-          format: date-time
-        result_url:
-          type: string
-          format: uri
-        subtitles_url:
-          type: string
-          format: uri
-        thumbnail_url:
-          type: string
-          format: uri
-        transcriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/TranscriptionVersion'
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
   responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: NotFoundError
+            description: not found
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Forbidden:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
     PaymentRequired:
       description: Insufficient credits.
       content:
@@ -243,27 +256,14 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: NotFoundError
-            description: not found
-    Forbidden:
-      description: Permission denied.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

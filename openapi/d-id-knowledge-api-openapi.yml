@@ -221,23 +221,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    CreateKnowledgeDto:
+    JsonError:
       type: object
-      required:
-      - name
-      - description
       properties:
-        name:
+        kind:
           type: string
-          description: Knowledge base identifier name.
+          example: AuthorizationError
         description:
           type: string
-          description: Description of the knowledge base content.
-        starter_message:
-          type: array
-          items:
-            type: string
-          description: Suggested chat starters (deprecated; prefer agent.starter_messages).
+          example: user unauthenticated
     ILogicalKnowledge:
       type: object
       properties:
@@ -266,15 +258,31 @@ components:
         modified_at:
           type: string
           format: date-time
-    JsonError:
+    CreateKnowledgeDto:
       type: object
+      required:
+      - name
+      - description
       properties:
-        kind:
+        name:
           type: string
-          example: AuthorizationError
+          description: Knowledge base identifier name.
         description:
           type: string
-          example: user unauthenticated
+          description: Description of the knowledge base content.
+        starter_message:
+          type: array
+          items:
+            type: string
+          description: Suggested chat starters (deprecated; prefer agent.starter_messages).
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found.
@@ -291,14 +299,6 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

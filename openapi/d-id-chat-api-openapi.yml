@@ -57,30 +57,15 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ChatMessageRequest:
+    JsonError:
       type: object
-      required:
-      - messages
       properties:
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatMessage'
-          description: Conversation messages. Must contain at least one message.
-        streamId:
+        kind:
           type: string
-          description: Optional stream ID to link video response.
-        sessionId:
+          example: AuthorizationError
+        description:
           type: string
-          description: Optional session ID for WebRTC stream.
-        chatMode:
-          type: string
-          enum:
-          - Functional
-          - TextOnly
-          - Maintenance
-          - Playground
-          description: Chat operating mode (Playground deprecated).
+          example: user unauthenticated
     ChatMessageResponse:
       type: object
       properties:
@@ -115,6 +100,30 @@ components:
         created_at:
           type: string
           format: date-time
+    ChatMessageRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+          description: Conversation messages. Must contain at least one message.
+        streamId:
+          type: string
+          description: Optional stream ID to link video response.
+        sessionId:
+          type: string
+          description: Optional session ID for WebRTC stream.
+        chatMode:
+          type: string
+          enum:
+          - Functional
+          - TextOnly
+          - Maintenance
+          - Playground
+          description: Chat operating mode (Playground deprecated).
     KnowledgeMatch:
       type: object
       properties:
@@ -131,15 +140,6 @@ components:
         source_url:
           type: string
           format: uri
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: AuthorizationError
-        description:
-          type: string
-          example: user unauthenticated
   responses:
     Unauthorized:
       description: Authentication failure.

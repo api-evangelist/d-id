@@ -121,6 +121,17 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    JsonError:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Error type identifier.
+          example: AuthorizationError
+        description:
+          type: string
+          description: Human-readable error description.
+          example: user unauthenticated
     GetTranslationResponse:
       type: object
       properties:
@@ -162,6 +173,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TranscriptionVersion'
+    TranscriptionVersion:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        version_type:
+          type: string
+        selected:
+          type: boolean
     CreateTranslationDto:
       type: object
       required:
@@ -198,28 +219,19 @@ components:
           type: string
           format: uri
           description: Destination for the output video.
-    TranscriptionVersion:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-        version_type:
-          type: string
-        selected:
-          type: boolean
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          description: Error type identifier.
-          example: AuthorizationError
-        description:
-          type: string
-          description: Human-readable error description.
-          example: user unauthenticated
   responses:
+    PaymentRequired:
+      description: Insufficient credits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    BadRequest:
+      description: Bad request — invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
     NotFound:
       description: Resource not found.
       content:
@@ -229,24 +241,6 @@ components:
           example:
             kind: NotFoundError
             description: not found
-    BadRequest:
-      description: Bad request — invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    Forbidden:
-      description: Permission denied.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    PaymentRequired:
-      description: Insufficient credits.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
     Unauthorized:
       description: Authentication failure.
       content:
@@ -256,6 +250,12 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
+    Forbidden:
+      description: Permission denied.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
   parameters:
     resourceId:
       name: id

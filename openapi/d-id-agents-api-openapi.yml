@@ -125,48 +125,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    AgentCreateDto:
+    JsonError:
       type: object
-      required:
-      - presenter
       properties:
-        presenter:
-          $ref: '#/components/schemas/PresenterConfig'
-        preview_name:
+        kind:
           type: string
-          description: Agent display name.
-        preview_description:
+          example: AuthorizationError
+        description:
           type: string
-          description: Agent description.
-        llm:
-          $ref: '#/components/schemas/LLMConfig'
-        knowledge:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Knowledge base ID for RAG.
-        starter_message:
-          type: array
-          items:
-            type: string
-          description: Suggested conversation starters.
-        greetings:
-          type: array
-          items:
-            type: string
-          description: Greeting messages (randomly selected per session).
-        user_data:
-          type: string
-          description: Custom user data (1–1,000 characters).
-          minLength: 1
-          maxLength: 1000
-        embed:
-          type: boolean
-          description: Enable SDK/website embedding.
-        triggers:
-          type: object
-          description: Event-based configurations (webhooks, tools).
+          example: user unauthenticated
     LLMConfig:
       type: object
       description: Language model configuration.
@@ -215,6 +182,48 @@ components:
               type: string
             voice_id:
               type: string
+    AgentCreateDto:
+      type: object
+      required:
+      - presenter
+      properties:
+        presenter:
+          $ref: '#/components/schemas/PresenterConfig'
+        preview_name:
+          type: string
+          description: Agent display name.
+        preview_description:
+          type: string
+          description: Agent description.
+        llm:
+          $ref: '#/components/schemas/LLMConfig'
+        knowledge:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Knowledge base ID for RAG.
+        starter_message:
+          type: array
+          items:
+            type: string
+          description: Suggested conversation starters.
+        greetings:
+          type: array
+          items:
+            type: string
+          description: Greeting messages (randomly selected per session).
+        user_data:
+          type: string
+          description: Custom user data (1–1,000 characters).
+          minLength: 1
+          maxLength: 1000
+        embed:
+          type: boolean
+          description: Enable SDK/website embedding.
+        triggers:
+          type: object
+          description: Event-based configurations (webhooks, tools).
     AgentResponseDto:
       type: object
       properties:
@@ -256,15 +265,14 @@ components:
           description: Plan information.
         embed:
           type: boolean
-    JsonError:
-      type: object
-      properties:
-        kind:
-          type: string
-          example: AuthorizationError
-        description:
-          type: string
-          example: user unauthenticated
+  parameters:
+    resourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found.
@@ -281,14 +289,6 @@ components:
           example:
             kind: AuthorizationError
             description: user unauthenticated
-  parameters:
-    resourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique resource identifier.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

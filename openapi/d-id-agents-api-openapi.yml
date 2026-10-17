@@ -124,16 +124,106 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+    Unauthorized:
+      description: Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonError'
+          example:
+            kind: AuthorizationError
+            description: user unauthenticated
   schemas:
-    JsonError:
+    AgentResponseDto:
       type: object
       properties:
-        kind:
+        id:
           type: string
-          example: AuthorizationError
-        description:
+          description: Agent identifier.
+        preview_description:
           type: string
-          example: user unauthenticated
+        presenter:
+          $ref: '#/components/schemas/PresenterConfig'
+        llm:
+          $ref: '#/components/schemas/LLMConfig'
+        knowledge:
+          type: object
+          properties:
+            id:
+              type: string
+        starter_message:
+          type: array
+          items:
+            type: string
+        greetings:
+          type: array
+          items:
+            type: string
+        provider:
+          type: string
+          example: d-id-agents
+        error:
+          type: object
+          description: Error details if applicable.
+        triggers:
+          type: object
+        client_key:
+          type: string
+          description: Auto-generated scoped client key.
+        metadata:
+          type: object
+          description: Plan information.
+        embed:
+          type: boolean
+    AgentCreateDto:
+      type: object
+      required:
+      - presenter
+      properties:
+        presenter:
+          $ref: '#/components/schemas/PresenterConfig'
+        preview_name:
+          type: string
+          description: Agent display name.
+        preview_description:
+          type: string
+          description: Agent description.
+        llm:
+          $ref: '#/components/schemas/LLMConfig'
+        knowledge:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Knowledge base ID for RAG.
+        starter_message:
+          type: array
+          items:
+            type: string
+          description: Suggested conversation starters.
+        greetings:
+          type: array
+          items:
+            type: string
+          description: Greeting messages (randomly selected per session).
+        user_data:
+          type: string
+          description: Custom user data (1–1,000 characters).
+          minLength: 1
+          maxLength: 1000
+        embed:
+          type: boolean
+          description: Enable SDK/website embedding.
+        triggers:
+          type: object
+          description: Event-based configurations (webhooks, tools).
     LLMConfig:
       type: object
       description: Language model configuration.
@@ -182,89 +272,15 @@ components:
               type: string
             voice_id:
               type: string
-    AgentCreateDto:
-      type: object
-      required:
-      - presenter
-      properties:
-        presenter:
-          $ref: '#/components/schemas/PresenterConfig'
-        preview_name:
-          type: string
-          description: Agent display name.
-        preview_description:
-          type: string
-          description: Agent description.
-        llm:
-          $ref: '#/components/schemas/LLMConfig'
-        knowledge:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Knowledge base ID for RAG.
-        starter_message:
-          type: array
-          items:
-            type: string
-          description: Suggested conversation starters.
-        greetings:
-          type: array
-          items:
-            type: string
-          description: Greeting messages (randomly selected per session).
-        user_data:
-          type: string
-          description: Custom user data (1–1,000 characters).
-          minLength: 1
-          maxLength: 1000
-        embed:
-          type: boolean
-          description: Enable SDK/website embedding.
-        triggers:
-          type: object
-          description: Event-based configurations (webhooks, tools).
-    AgentResponseDto:
+    JsonError:
       type: object
       properties:
-        id:
+        kind:
           type: string
-          description: Agent identifier.
-        preview_description:
+          example: AuthorizationError
+        description:
           type: string
-        presenter:
-          $ref: '#/components/schemas/PresenterConfig'
-        llm:
-          $ref: '#/components/schemas/LLMConfig'
-        knowledge:
-          type: object
-          properties:
-            id:
-              type: string
-        starter_message:
-          type: array
-          items:
-            type: string
-        greetings:
-          type: array
-          items:
-            type: string
-        provider:
-          type: string
-          example: d-id-agents
-        error:
-          type: object
-          description: Error details if applicable.
-        triggers:
-          type: object
-        client_key:
-          type: string
-          description: Auto-generated scoped client key.
-        metadata:
-          type: object
-          description: Plan information.
-        embed:
-          type: boolean
+          example: user unauthenticated
   parameters:
     resourceId:
       name: id
@@ -273,22 +289,6 @@ components:
       description: Unique resource identifier.
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-    Unauthorized:
-      description: Authentication failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JsonError'
-          example:
-            kind: AuthorizationError
-            description: user unauthenticated
   securitySchemes:
     basicAuth:
       type: http

@@ -49,7 +49,6 @@ tags:
 - Generative AI
 - Video Generation
 - Real-Time Streaming
-- Text-to-Video
 - Video Translation
 - Voice Cloning
 tags_raw:
@@ -65,6 +64,7 @@ tags_raw:
 - Text to Video
 - Video Translation
 - Voice Cloning
+- Text-to-Video
 url: https://raw.githubusercontent.com/api-evangelist/d-id/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'

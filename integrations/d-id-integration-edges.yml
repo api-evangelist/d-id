@@ -28,10 +28,10 @@ edges:
   channel: distribution
   relationship: distribution-channel
   direction: third-party
-  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=D-ID%20Tel-Aviv
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=D-ID
   listing_count: 1
   apps:
   - AI Avatars & Digital Humans by D-ID
-  seller_name: D-ID Tel-Aviv
+  seller_name: D-ID
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'

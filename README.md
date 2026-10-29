@@ -1,4 +1,4 @@
-# D-ID (d-id)
+# D-ID
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,66 +64,181 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-D-ID is an AI-powered platform for generating talking-head videos and interactive digital human experiences. Developers can access REST APIs to produce pre-rendered talking avatar videos from still photos and text scripts, run real-time AI agent streaming sessions over WebRTC, translate videos into 100+ languages with voice cloning and lip-sync, and build custom digital humans backed by LLMs and RAG knowledge bases. D-ID has generated over 150 million videos and supports parallel processing of tens of thousands of simultaneous API requests.
+D-ID is an AI-powered platform for generating talking-head videos and interactive digital human experiences from still photos, text scripts, and audio narration. Developers can access REST APIs to produce pre-rendered talking avatar videos, perform real-time streaming agent conversations via WebRTC, translate videos into 100+ languages with voice cloning and lip-sync, and create custom AI agents backed by LLMs and RAG knowledge bases. The platform has generated over 150 million videos and supports parallel processing of tens of thousands of simultaneous API requests. D-ID serves use cases ranging from enterprise training and customer service to personalized marketing campaigns and language learning applications.
 
-**APIs.json:** https://raw.githubusercontent.com/api-evangelist/d-id/refs/heads/main/apis.yml
+**Areas:** Avatars · DID · AI Video · Digital Humans · Talking Head · Generative AI · Video Generation · Real-Time Streaming · Video Translation · Voice Cloning
 
-**Naftiko Fleet:** https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=d-id-api-evangelist&utm_content=repo
+## D-ID on APIs.io
 
----
+Everything profiled for D-ID is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/d-id/](https://apis.io/providers/d-id/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-`AI Video` `Digital Humans` `Talking Head` `Avatar` `Generative AI` `Video Generation` `Real-Time Streaming` `Text to Video` `Video Translation` `Voice Cloning`
+- [D-ID Agents API](https://apis.io/apis/d-id/d-id-agents-api/) — Create and manage AI agent definitions
+- [D-ID Chat API](https://apis.io/apis/d-id/d-id-chat-api/) — Send messages and receive responses in an agent chat
+- [D-ID Credits API](https://apis.io/apis/d-id/d-id-credits-api/) — Retrieve account credit balance
+- [D-ID Knowledge API](https://apis.io/apis/d-id/d-id-knowledge-api/) — Manage knowledge bases and documents for RAG
+- [D-ID Sessions API](https://apis.io/apis/d-id/d-id-sessions-api/) — Manage real-time streaming sessions for agents
+- [D-ID Talks API](https://apis.io/apis/d-id/d-id-talks-api/) — Generate AI talking-head videos (V2 Photo / V3 Pro avatars)
+- [D-ID Translations API](https://apis.io/apis/d-id/d-id-translations-api/) — API for translating existing videos into 100+ languages using AI-driven speech translation, voice cloning, and lip-sync technology. Enables brands and…
+- [D-ID Videos V4 API](https://apis.io/apis/d-id/d-id-videos-v4-api/) — Generate V4 Expressive full-HD avatar videos
+- [D-ID Voices API](https://apis.io/apis/d-id/d-id-voices-api/) — List available TTS voices
 
----
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| API | Description | Docs |
-|-----|-------------|------|
-| D-ID Videos API | Generate AI talking-head videos from images with text or audio scripts across multiple avatar versions | [Reference](https://docs.d-id.com/reference/createtalk) |
-| D-ID Agents API | Create real-time interactive AI agents combining digital avatar streaming with LLMs and knowledge bases | [Reference](https://docs.d-id.com/reference/agents) |
-| D-ID Translations API | Translate videos into 100+ languages with voice cloning and lip-sync | [Reference](https://docs.d-id.com/reference/translations) |
+#### Agentic access (1)
 
----
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Plans / Rate Limits / FinOps
+- [D Id Agentic Access](https://apis.io/agentic-access/d-id/d-id-agentic-access/)
 
-| Resource | File |
-|----------|------|
-| Pricing Plans | [plans/d-id-plans-pricing.yml](plans/d-id-plans-pricing.yml) |
-| Rate Limits | [rate-limits/d-id-rate-limits.yml](rate-limits/d-id-rate-limits.yml) |
-| FinOps | [finops/d-id-finops.yml](finops/d-id-finops.yml) |
+#### JSON Schema (2)
 
-**Pricing model:** Freemium subscription with shared API + Studio video minute quota. Plans: Trial (free, 14 days), Lite ($5.90/mo, 10 min), Pro ($48/mo, 30 min), Advanced ($299/mo, 65 min), Enterprise (custom).
+The data models the API reads and writes.
 
----
+- [D-ID Agent](https://apis.io/schemas/d-id/d-id-agent/)
+- [D-ID Talk](https://apis.io/schemas/d-id/d-id-talk/)
 
-## Timestamps
+#### JSON-LD (1)
 
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
+Linked-data contexts for the provider's vocabulary.
 
----
+- [D Id Context](https://apis.io/jsonld/d-id/d-id-context/)
 
-## Common Properties
+#### Vocabulary (1)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.d-id.com |
-| Documentation | https://docs.d-id.com |
-| API Reference | https://docs.d-id.com/reference/get-started |
-| GitHub Organization | https://github.com/de-id |
-| LinkedIn | https://www.linkedin.com/company/deidentification |
-| X / Twitter | https://twitter.com/D_ID_ |
-| Blog | https://www.d-id.com/blog |
-| API Blog | https://www.d-id.com/blog/category/api/ |
-| Pricing | https://www.d-id.com/pricing/api/ |
-| Status Page | https://status.d-id.com |
+The provider's domain terms, defined.
 
----
+- [D Id Vocabulary](https://apis.io/vocabularies/d-id/d-id-vocabulary/)
 
-## Maintainers
+#### Examples (3)
 
-**Kin Lane** — kin@apievangelist.com
+Example requests and responses.
+
+- [D Id Create Agent Example](https://apis.io/examples/d-id/d-id-create-agent-example/)
+- [D Id Create Talk Example](https://apis.io/examples/d-id/d-id-create-talk-example/)
+- [D Id Create Translation Example](https://apis.io/examples/d-id/d-id-create-translation-example/)
+
+#### Collections (18)
+
+Postman and Open Collection request collections.
+
+- [D-ID Agents API](https://apis.io/collections/d-id/open-d-id-agents-api/)
+- [D-ID Agents Chat API](https://apis.io/collections/d-id/open-d-id-chat-api/)
+- [D-ID Agents Credits API](https://apis.io/collections/d-id/open-d-id-credits-api/)
+- [D-ID Agents Knowledge API](https://apis.io/collections/d-id/open-d-id-knowledge-api/)
+- [D-ID Agents Sessions API](https://apis.io/collections/d-id/open-d-id-sessions-api/)
+- [D-ID Agents Talks API](https://apis.io/collections/d-id/open-d-id-talks-api/)
+- [D-ID Agents Translations API](https://apis.io/collections/d-id/open-d-id-translations-api/)
+- [D-ID Agents Videos V4 API](https://apis.io/collections/d-id/open-d-id-videos-v4-api/)
+- [D-ID Agents Voices API](https://apis.io/collections/d-id/open-d-id-voices-api/)
+- [D-ID Agents API](https://apis.io/collections/d-id/postman-d-id-agents-api/)
+- [D-ID Agents Chat API](https://apis.io/collections/d-id/postman-d-id-chat-api/)
+- [D-ID Agents Credits API](https://apis.io/collections/d-id/postman-d-id-credits-api/)
+- [D-ID Agents Knowledge API](https://apis.io/collections/d-id/postman-d-id-knowledge-api/)
+- [D-ID Agents Sessions API](https://apis.io/collections/d-id/postman-d-id-sessions-api/)
+- [D-ID Agents Talks API](https://apis.io/collections/d-id/postman-d-id-talks-api/)
+- [D-ID Agents Translations API](https://apis.io/collections/d-id/postman-d-id-translations-api/)
+- [D-ID Agents Videos V4 API](https://apis.io/collections/d-id/postman-d-id-videos-v4-api/)
+- [D-ID Agents Voices API](https://apis.io/collections/d-id/postman-d-id-voices-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [D-ID — jsonschema rules](https://apis.io/rules/d-id/d-id-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [D Id Authentication](https://apis.io/security/d-id/d-id-authentication/)
+- [D Id Domain Security](https://apis.io/security/d-id/d-id-domain-security/)
+- [D Id Trust Center](https://apis.io/security/d-id/d-id-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [D Id Plans Pricing](https://apis.io/plans/d-id/d-id-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [D Id Rate Limits](https://apis.io/rate-limits/d-id/d-id-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [D Id Finops](https://apis.io/finops/d-id/d-id-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.d-id.com)
+- [Documentation](https://docs.d-id.com)
+- [API reference](https://docs.d-id.com/reference/get-started)
+- [Pricing](https://www.d-id.com/pricing/api/)
+- [Blog](https://www.d-id.com/blog)
+- [GitHub](https://github.com/de-id)
+- [Status](https://status.d-id.com)
+
+## API Evangelist rating
+
+**Kin Score 40.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 70.1 |
+| Contract governance | 23.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 26.3 |
+
+**Agent readiness 20.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.3** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/d-id/](https://apis.io/providers/d-id/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for D-ID: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/d-id/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
